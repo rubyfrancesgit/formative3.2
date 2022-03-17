@@ -217,4 +217,21 @@ $(document).ready(function() {
         alert('You are now logged out');
         console.log(sessionStorage);
     })
+
+    // projects card starts
+    // when card is hovered over hide class is removed
+    // $('.projects__card').hover(function() {
+    //     $('.projects__heading').removeClass('hide');
+    // });
+    
+
+    $('.projects__card').hover(function(){
+        // alert(this.id);
+        $('.projects__heading').removeClass('hide');
+        }, function(){
+        $('.projects__heading').addClass('hide');
+      });
+    // projects card ends
+
+
 }); // end of docuemnt ready function

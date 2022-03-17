@@ -17,3 +17,63 @@ li {
 .hide {
   display: none;
 }
+
+@font-face {
+  font-family: haettenschweiler, sans-serif;
+  src: url(../fonts/haetten.ttf);
+}
+.projects {
+  background: coral;
+  width: 100%;
+  min-height: 50px;
+  display: flex;
+  flex-flow: row wrap;
+  padding: 5%;
+}
+.projects__card {
+  background: darkkhaki;
+  width: 150px;
+  min-height: 582px;
+  position: relative;
+  margin-bottom: 20rem;
+  margin-right: 2rem;
+}
+.projects__card:hover {
+  width: 660px;
+}
+.projects__img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.projects__heading {
+  font-size: 5rem;
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-family: haettenschweiler, sans-serif;
+}
+.projects__author {
+  font-size: 2rem;
+  z-index: 1;
+  position: absolute;
+  bottom: 5%;
+  left: 5%;
+}
+.projects__description {
+  font-size: 1.7rem;
+  position: absolute;
+  bottom: -10rem;
+  left: 50%;
+  transform: translate(-50%, 0);
+  text-align: center;
+}
+
+body {
+  width: 100%;
+  background: cadetblue;
+}

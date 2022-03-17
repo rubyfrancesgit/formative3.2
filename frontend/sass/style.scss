@@ -1,3 +1,9 @@
 @import 'resets';
 @import 'variables';
 @import 'mixins';
+@import 'cards';
+
+body{
+    width: 100%;
+    background: cadetblue;
+}

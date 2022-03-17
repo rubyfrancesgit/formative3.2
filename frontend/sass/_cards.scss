@@ -1,0 +1,50 @@
+.projects{
+    background: coral;
+    width: 100%;
+    min-height: 50px;
+    display: flex;
+    flex-flow: row wrap;
+    padding: 5%;
+    &__card{
+        background: darkkhaki;
+        width: 150px;
+        min-height: 582px;
+        position: relative;
+        margin-bottom: 20rem;
+        margin-right: 2rem;
+        &:hover{
+            width: 660px;
+        }
+    }
+    &__img{
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+    &__heading{
+        font-size: 5rem;
+        z-index: 1;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        font-family: $heading-font;
+    }
+    &__author{
+        font-size: 2rem;
+        z-index: 1;
+        position: absolute;
+        bottom: 5%;
+        left: 5%;
+    }
+    &__description{
+        font-size: 1.7rem;
+        position: absolute;
+        bottom: -10rem;
+        left: 50%;
+        transform: translate(-50%, 0);
+        text-align: center;
+    }
+}
