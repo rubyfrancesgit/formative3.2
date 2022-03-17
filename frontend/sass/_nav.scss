@@ -1,0 +1,41 @@
+.nav {
+    width: 100vw;
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 5rem;
+    padding-right: 3rem;
+
+    &__heading {
+        font-size: 2.5rem;
+    }
+
+    &__ul {
+        display: flex
+    }
+
+    &__li {
+        width: 8rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    &__search {
+        width: 8rem;
+        @include input;
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    &__search::placeholder {
+        @include text;
+    }
+
+    &__select {
+        width: 8rem;
+        @include input;
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+}

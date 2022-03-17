@@ -1,0 +1,19 @@
+@mixin center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin text {
+    color: #B6B6B6;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.3rem;
+}
+
+@mixin input {
+    border: none;
+    @include text;
+    @include center;
+    cursor: pointer;
+    background: transparent;
+}
