@@ -26,20 +26,19 @@ li {
   background: coral;
   width: 100%;
   min-height: 50px;
-  display: flex;
-  flex-flow: row wrap;
-  padding: 5%;
+  display: grid;
+  padding: 5% 4% 5% 18%;
+  grid-template-columns: repeat(auto-fit, 150px);
+  gap: 12rem 1.5rem;
+  direction: rtl;
 }
 .projects__card {
-  background: darkkhaki;
-  width: 150px;
   min-height: 582px;
   position: relative;
-  margin-bottom: 20rem;
-  margin-right: 2rem;
-}
-.projects__card:hover {
-  width: 660px;
+  width: 150px;
+  z-index: 0;
+  filter: grayscale(100%);
+  transition: width 1s ease, z-index 0.5s, filter 1s ease;
 }
 .projects__img {
   height: 100%;
@@ -56,6 +55,7 @@ li {
   transform: translate(-50%, -50%);
   text-align: center;
   font-family: haettenschweiler, sans-serif;
+  z-index: 11;
 }
 .projects__author {
   font-size: 2rem;
@@ -63,6 +63,7 @@ li {
   position: absolute;
   bottom: 5%;
   left: 5%;
+  z-index: 11;
 }
 .projects__description {
   font-size: 1.7rem;
@@ -71,6 +72,13 @@ li {
   left: 50%;
   transform: translate(-50%, 0);
   text-align: center;
+  z-index: 11;
+}
+
+.active {
+  width: 482px;
+  z-index: 10;
+  filter: grayscale(0%);
 }
 
 body {
