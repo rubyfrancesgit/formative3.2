@@ -1,5 +1,32 @@
 console.log('linked');
 
+const registerModal = document.getElementById('registerModal');
+const loginModal = document.getElementById('loginModal');
+const modalBackground = document.getElementById('modalBackground');
+const navRegisterBtn = document.getElementById('navRegisterBtn');
+const navLoginBtn = document.getElementById('navLoginBtn');
+let userId;
+
+$('#navRegisterBtn').click(function() {
+    console.log('clicked');
+    $('#modal').empty();
+    registerModal.style.display = 'block';
+    modalBackground.style.display = 'block';
+});
+
+$('#navLoginBtn').click(function() {
+    console.log('clicked');
+    $('#modal').empty();
+    loginModal.style.display = "block";
+    modalBackground.style.display = "block";
+});
+
+$('#modalBackground').click(function() {
+    registerModal.style.display = "none";
+    loginModal.style.display = "none";
+    modalBackground.style.display = "none";
+});
+
 $(document).ready(function() {
     console.log('ready');
 
@@ -27,7 +54,7 @@ $(document).ready(function() {
         let name = $('#addProjectName').val();
         let imgUrl = $('#addProjectImgUrl').val();
         let description = $('#addProjectDescription').val();
-        let userId = sessionStorage.getItem('userID');
+        userId = sessionStorage.getItem('userID');
 
         console.log(name, imgUrl, description);
 
@@ -149,6 +176,9 @@ $(document).ready(function() {
                         $('#signUpUsername').val('');
                         $('#signUpEmail').val('');
                         $('#signUpPassword').val('');
+
+                        registerModal.style.display = "none";
+                        modalBackground.style.display = "none";
                     } else {
                         alert('Username already taken. Please use a different username');
 
@@ -198,10 +228,25 @@ $(document).ready(function() {
                         sessionStorage.setItem('userName', user['username']);
                         sessionStorage.setItem('userEmail', user['email']);
                         console.log(sessionStorage);
-                        alert('Welcome back');
                         
                         $('#loginUsername').val('');
                         $('#loginPassword').val('');
+
+                        // hiding login modal
+                        loginModal.style.display = "none";
+                        modalBackground.style.display = "none";
+                        navRegisterBtn.style.display = "none";
+                        navLoginBtn.style.display = "none";
+
+                        let displayName = sessionStorage.getItem('userName');
+                        console.log(displayName);
+
+                        $('#navUl').append(
+                            `
+                                <li class="nav__li">${displayName}</li>
+                            `
+                        )
+
                     } // end of inner if statements
                 }, // end of success
                 error: function() {
