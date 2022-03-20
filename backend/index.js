@@ -36,7 +36,8 @@ app.post('/addProject', (req, res) => {
         _id: new mongoose.Types.ObjectId,
         name: req.body.name,
         image_url: req.body.image_url,
-        description: req.body.description
+        description: req.body.description,
+        username: req.body.username
     });
 
     // save to the database & notifu the user

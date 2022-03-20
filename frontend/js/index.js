@@ -55,6 +55,7 @@ $(document).ready(function() {
         let imgUrl = $('#addProjectImgUrl').val();
         let description = $('#addProjectDescription').val();
         userId = sessionStorage.getItem('userID');
+        let username = sessionStorage.getItem('userName');
 
         console.log(name, imgUrl, description);
 
@@ -67,7 +68,8 @@ $(document).ready(function() {
                 data: {
                     name: name,
                     image_url: imgUrl,
-                    description: description
+                    description: description,
+                    username: username
                 },
                 success: function(project) {
                     console.log(project);
