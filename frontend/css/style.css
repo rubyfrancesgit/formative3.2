@@ -210,22 +210,19 @@ body {
   align-items: center;
   cursor: pointer;
   background: transparent;
-  border-left: 1px solid #B6B6B6;
-  border-bottom: 1px solid #B6B6B6;
+  width: 7rem;
   padding-bottom: 1rem;
   padding-left: 1rem;
   padding-right: 1rem;
   margin-top: 1rem;
 }
-
-#box {
+.sign-up__box {
   height: 40px;
   width: 20px;
   position: relative;
   border-bottom: 1px solid #B6B6B6;
 }
-
-#borderLeft {
+.sign-up__border-left {
   border-left: 1px solid #B6B6B6;
   position: absolute;
   top: 50%;
@@ -277,5 +274,16 @@ body {
   padding-left: 1rem;
   padding-right: 1rem;
   margin-top: 1rem;
-  z-index: 10000;
+}
+.login__box {
+  height: 40px;
+  width: 20px;
+  position: relative;
+  border-bottom: 1px solid #B6B6B6;
+}
+.login__border-left {
+  border-left: 1px solid #B6B6B6;
+  position: absolute;
+  top: 50%;
+  bottom: 0;
 }
