@@ -1,5 +1,11 @@
 @import 'resets';
 @import 'variables';
 @import 'mixins';
+@import 'cards';
 @import 'nav';
 @import 'modal';
+
+body{
+    width: 100%;
+    background: cadetblue;
+}

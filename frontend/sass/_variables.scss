@@ -1,0 +1,12 @@
+// media queries
+$desktop: "(min-width:1024px)";
+$tablet: "(min-width:601px) and (max-width:1023px)";
+$mobile: "(max-width: 600px)";
+
+
+@font-face {
+    font-family: haettenschweiler, sans-serif;
+    src: url(../fonts/haetten.ttf);
+}
+
+$heading-font: haettenschweiler, sans-serif;

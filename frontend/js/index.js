@@ -262,4 +262,51 @@ $(document).ready(function() {
         alert('You are now logged out');
         console.log(sessionStorage);
     })
+
+
+
+    //------- project cards starts ---------
+    // using tempory Ids to test cards work before adding json data
+    let tempIds = [101,102,103,104,105,106,107,108,109,110,111,112];
+
+    function projectLoop(){
+        console.log(tempIds);
+        let i = 0;
+        for(i = 0; i < tempIds.length; i++){
+            generateCard(i);
+        }
+    }
+    projectLoop();
+    
+    function generateCard(x){
+        $('.projects').append(
+            `
+            <div id="${tempIds[x]}" class="projects__card">
+                <img class="projects__img" src="https://images.pexels.com/photos/461064/pexels-photo-461064.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="project image">
+                <h1 class="projects__heading hide">Project Heading</h1>
+                <h3 class="projects__author hide">Author Name</h3>
+                <p class="projects__description hide">Description</p>
+            </div>
+            `
+        );
+    }
+
+
+    // adding active and displaying card content on hover
+    $('.projects__card').hover(function(){
+        $(this).addClass('active');
+        // then when card is hovered over hide class is removed
+        $('#'+this.id+' .projects__heading').removeClass('hide');
+        $('#'+this.id+' .projects__author').removeClass('hide');
+        $('#'+this.id+' .projects__description').removeClass('hide');
+        }, function(){
+        $(this).removeClass('active');
+        // then when user leaves card hide class is added
+        $('#'+this.id+' .projects__heading').addClass('hide');
+        $('#'+this.id+' .projects__author').addClass('hide');
+        $('#'+this.id+' .projects__description').addClass('hide');
+    });
+    //------- project cards ends ---------
+
+
 }); // end of docuemnt ready function

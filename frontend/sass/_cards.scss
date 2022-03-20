@@ -1,0 +1,60 @@
+.projects{
+    background: coral;
+    width: 100%;
+    min-height: 50px;
+    display: grid;
+    padding: 5% 4% 5% 18%;
+    grid-template-columns: repeat(auto-fit, 150px);
+    gap: 12rem 1.5rem;
+    direction: rtl;
+    
+    &__card{
+        min-height: 582px;
+        position: relative;
+        width: 150px;
+        z-index: 0;
+        filter: grayscale(100%);
+        transition: width 1s ease, z-index 0.5s, filter 1s ease;
+    }
+    &__img{
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+        
+    }
+    &__heading{
+        font-size: 5rem;
+        z-index: 1;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        font-family: $heading-font;
+        z-index: 11;
+    }
+    &__author{
+        font-size: 2rem;
+        z-index: 1;
+        position: absolute;
+        bottom: 5%;
+        left: 5%;
+        z-index: 11;
+    }
+    &__description{
+        font-size: 1.7rem;
+        position: absolute;
+        bottom: -10rem;
+        left: 50%;
+        transform: translate(-50%, 0);
+        text-align: center;
+        z-index: 11;
+    }
+}
+
+.active{
+    width: 482px;
+    z-index: 10;
+    filter: grayscale(0%);
+}
