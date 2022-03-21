@@ -69,7 +69,8 @@ $(document).ready(function() {
                     name: name,
                     image_url: imgUrl,
                     description: description,
-                    username: username
+                    username: username,
+                    user_id: userId
                 },
                 success: function(project) {
                     console.log(project);
