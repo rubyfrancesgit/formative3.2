@@ -15,9 +15,10 @@ li {
 }
 
 body {
-    background: #0D0D0D;
-    color: #B6B6B6;
-    font-family: 'Open Sans', sans-serif;
+    width: 100%;
+    background: $dark-gray;
+    color: $med-grey;
+    font-family: $body-font;
     font-size: 1.3rem;
 }
 

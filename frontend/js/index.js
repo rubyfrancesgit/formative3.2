@@ -290,10 +290,14 @@ $(document).ready(function() {
                 document.getElementById('result').innerHTML +=
                 `
                 <div id="${projectsFromMongo[i]._id}" class="projects__card">
-                    <img class="projects__img" src="${projectsFromMongo[i].image_url}" alt="project image">
+                    <div class="projects__image-wrap">
+                        <img class="projects__img" src="${projectsFromMongo[i].image_url}" alt="project image">
+                    </div>
                     <h1 class="projects__heading hide">${projectsFromMongo[i].name}</h1>
                     <h3 class="projects__author hide">${projectsFromMongo[i].username}</h3>
-                    <p class="projects__description hide">${projectsFromMongo[i].description}</p>
+                    <div class="projects__description-wrap hide">
+                        <p class="projects__description">${projectsFromMongo[i].description}</p>
+                    </div>
                 </div>
                 `;
               }
@@ -305,13 +309,13 @@ $(document).ready(function() {
                     // then when card is hovered over hide class is removed
                     $('#'+this.id+' .projects__heading').removeClass('hide');
                     $('#'+this.id+' .projects__author').removeClass('hide');
-                    $('#'+this.id+' .projects__description').removeClass('hide');
+                    $('#'+this.id+' .projects__description-wrap').removeClass('hide');
                     }, function(){
                     $(this).removeClass('active');
                     // then when user leaves card hide class is added
                     $('#'+this.id+' .projects__heading').addClass('hide');
                     $('#'+this.id+' .projects__author').addClass('hide');
-                    $('#'+this.id+' .projects__description').addClass('hide');
+                    $('#'+this.id+' .projects__description-wrap').addClass('hide');
                 });
                 // adding active and displaying card content on hover ends
             },
