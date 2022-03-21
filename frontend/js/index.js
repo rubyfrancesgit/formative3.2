@@ -1,37 +1,35 @@
-console.log('linked');
-
-const registerModal = document.getElementById('registerModal');
-const loginModal = document.getElementById('loginModal');
-const modalBackground = document.getElementById('modalBackground');
-const navRegisterBtn = document.getElementById('navRegisterBtn');
-const navLoginBtn = document.getElementById('navLoginBtn');
-let userId;
-
-$('#navRegisterBtn').click(function() {
-    console.log('clicked');
-    $('#modal').empty();
-    registerModal.style.display = 'block';
-    modalBackground.style.display = 'block';
-});
-
-$('#navLoginBtn').click(function() {
-    console.log('clicked');
-    $('#modal').empty();
-    loginModal.style.display = "block";
-    modalBackground.style.display = "block";
-});
-
-$('#modalBackground').click(function() {
-    registerModal.style.display = "none";
-    loginModal.style.display = "none";
-    modalBackground.style.display = "none";
-});
-
 $(document).ready(function() {
     console.log('ready');
 
-    let url;
+    const registerModal = document.getElementById('registerModal');
+    const loginModal = document.getElementById('loginModal');
+    const modalBackground = document.getElementById('modalBackground');
+    const navRegisterBtn = document.getElementById('navRegisterBtn');
+    const navLoginBtn = document.getElementById('navLoginBtn');
+    let userId;
 
+    $('#navRegisterBtn').click(function() {
+        console.log('clicked');
+        $('#modal').empty();
+        registerModal.style.display = 'block';
+        modalBackground.style.display = 'block';
+    });
+
+    $('#navLoginBtn').click(function() {
+        console.log('clicked');
+        $('#modal').empty();
+        loginModal.style.display = "block";
+        modalBackground.style.display = "block";
+    });
+
+    $('#modalBackground').click(function() {
+        registerModal.style.display = "none";
+        loginModal.style.display = "none";
+        modalBackground.style.display = "none";
+    });
+
+    let url;
+    
     $.ajax({
         url: 'config.json',
         type: 'GET',
@@ -41,11 +39,15 @@ $(document).ready(function() {
             console.log(configData.SERVER_URL, configData.SERVER_PORT);
             url = `${configData.SERVER_URL}:${configData.SERVER_PORT}`;
             console.log(url);
+            viewProjects(); //called here to use url in allProjectsFromDB on page load
         },
         error: function(error) {
             console.log(error);
         }
     }); // end of ajax
+
+
+    
 
     // add project to database
     $('#addProjectSubmitBtn').click(function() {
@@ -56,10 +58,11 @@ $(document).ready(function() {
         let description = $('#addProjectDescription').val();
         userId = sessionStorage.getItem('userID');
         let username = sessionStorage.getItem('userName');
+        let projectUrl = $('#addProjectProjectUrl').val();
 
-        console.log(name, imgUrl, description);
+        console.log(name, imgUrl, description, projectUrl);
 
-        if(name == "" || imgUrl == "" || description == "" || !userId) {
+        if(name == "" || imgUrl == "" || description == "" || projectUrl =="" || !userId) {
             alert("Please login and enter all fields");
         } else {
             $.ajax({
@@ -70,6 +73,7 @@ $(document).ready(function() {
                     image_url: imgUrl,
                     description: description,
                     username: username,
+                    project_url: projectUrl
                     user_id: userId
                 },
                 success: function(project) {
@@ -79,6 +83,7 @@ $(document).ready(function() {
                     $('#addProjectName').val('');
                     $('#addProjectImgUrl').val('');
                     $('#addProjectDescription').val('');
+                    $('#addProjectProjectUrl').val('');
                 },
                 error: function() {
                     console.log('Error: cannot call api');
@@ -95,11 +100,12 @@ $(document).ready(function() {
         let name = $('#updateProjectName').val();
         let imgUrl = $('#updateProjectImgUrl').val();
         let description = $('#updateProjectDescription').val();
+        let projectUrl = $('#updateProjectProjectUrl').val();
 
-        console.log(id, name, imgUrl, description);
+        console.log(id, name, imgUrl, description, projectUrl);
 
         if(id == "") {
-            alert("please enter projuct ID");
+            alert("please enter project ID");
         } else {
             $.ajax({
                 url: `http://${url}/updateProject/${id}`,
@@ -107,7 +113,8 @@ $(document).ready(function() {
                 data: {
                     name: name,
                     image_url: imgUrl,
-                    description: description
+                    description: description,
+                    project_url: projectUrl
                 },
                 success: function(data) {
                     console.log(data);
@@ -116,6 +123,7 @@ $(document).ready(function() {
                     $('#updateProjectName').val('');
                     $('#updateProjectImgUrl').val('');
                     $('#updateProjectDescription').val('');
+                    $('#updateProjectProjectUrl').val();
                 },
                 error: function() {
                     console.log('error: cannot update');
@@ -269,46 +277,49 @@ $(document).ready(function() {
 
 
     //------- project cards starts ---------
-    // using tempory Ids to test cards work before adding json data
-    let tempIds = [101,102,103,104,105,106,107,108,109,110,111,112];
-
-    function projectLoop(){
-        console.log(tempIds);
-        let i = 0;
-        for(i = 0; i < tempIds.length; i++){
-            generateCard(i);
-        }
+    function viewProjects(){
+        $.ajax({
+            url: `http://${url}/allProjectsFromDB`,
+            type: 'GET',
+            datatype: 'json',
+            success: function(projectsFromMongo){
+                // console.log(projectsFromMongo);
+                let i;
+                document.getElementById('result').innerHTML = '';
+                for(i=0; i<projectsFromMongo.length; i++){
+                document.getElementById('result').innerHTML +=
+                `
+                <div id="${projectsFromMongo[i]._id}" class="projects__card">
+                    <img class="projects__img" src="${projectsFromMongo[i].image_url}" alt="project image">
+                    <h1 class="projects__heading hide">${projectsFromMongo[i].name}</h1>
+                    <h3 class="projects__author hide">${projectsFromMongo[i].username}</h3>
+                    <p class="projects__description hide">${projectsFromMongo[i].description}</p>
+                </div>
+                `;
+              }
+                //placed in success function so elements can be selected afterwards
+                // adding active and displaying card content on hover
+                $('.projects__card').hover(function(){
+                    console.log(url);
+                    $(this).addClass('active');
+                    // then when card is hovered over hide class is removed
+                    $('#'+this.id+' .projects__heading').removeClass('hide');
+                    $('#'+this.id+' .projects__author').removeClass('hide');
+                    $('#'+this.id+' .projects__description').removeClass('hide');
+                    }, function(){
+                    $(this).removeClass('active');
+                    // then when user leaves card hide class is added
+                    $('#'+this.id+' .projects__heading').addClass('hide');
+                    $('#'+this.id+' .projects__author').addClass('hide');
+                    $('#'+this.id+' .projects__description').addClass('hide');
+                });
+                // adding active and displaying card content on hover ends
+            },
+            error:function(){
+              alert('unable to get products');
+            }
+        }) //ajax
     }
-    projectLoop();
-    
-    function generateCard(x){
-        $('.projects').append(
-            `
-            <div id="${tempIds[x]}" class="projects__card">
-                <img class="projects__img" src="https://images.pexels.com/photos/461064/pexels-photo-461064.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="project image">
-                <h1 class="projects__heading hide">Project Heading</h1>
-                <h3 class="projects__author hide">Author Name</h3>
-                <p class="projects__description hide">Description</p>
-            </div>
-            `
-        );
-    }
-
-
-    // adding active and displaying card content on hover
-    $('.projects__card').hover(function(){
-        $(this).addClass('active');
-        // then when card is hovered over hide class is removed
-        $('#'+this.id+' .projects__heading').removeClass('hide');
-        $('#'+this.id+' .projects__author').removeClass('hide');
-        $('#'+this.id+' .projects__description').removeClass('hide');
-        }, function(){
-        $(this).removeClass('active');
-        // then when user leaves card hide class is added
-        $('#'+this.id+' .projects__heading').addClass('hide');
-        $('#'+this.id+' .projects__author').addClass('hide');
-        $('#'+this.id+' .projects__description').addClass('hide');
-    });
     //------- project cards ends ---------
 
 

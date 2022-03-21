@@ -37,6 +37,7 @@ app.post('/addProject', (req, res) => {
         name: req.body.name,
         image_url: req.body.image_url,
         description: req.body.description,
+        project_url: req.body.project_url
         user_id: req.body.user_id
     });
 
@@ -54,7 +55,8 @@ app.patch('/updateProject/:id', (req,res) => {
         const updateProject = {
             name: req.body.name,
             image_url: req.body.image_url,
-            description: req.body.description
+            description: req.body.description,
+            project_url: req.body.project_url
         }
         Project.updateOne({_id:idParam}, updateProject)
         .then(result => {
@@ -117,3 +119,11 @@ app.post('/loginUser', (req, res) => {
         } // end of outer if statement
     }); // end of find one
 }); // end of login
+
+
+// get all projects from the database
+app.get('/allProjectsFromDB', (req,res)=>{
+  Project.find().then(result=>{
+    res.send(result);
+  })
+})

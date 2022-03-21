@@ -25,7 +25,7 @@
 
     <body>
         <nav class="nav">
-          <h1 class="nav__heading">Puruse</h1>
+          <h1 class="nav__heading">Peruse</h1>
 
           <div class="nav__ul" id="navUl">
             <input class="nav__search" type="text" placeholder="Search..." id="searchInput">
@@ -99,6 +99,11 @@
                 <input type="text" class="form-control" id="addProjectDescription" placeholder="Description..." required>
             </div>
 
+            <div class="form-group">
+              <label>Project url</label>
+              <input type="text" class="form-control" id="addProjectProjectUrl" placeholder="Project url..." required>
+            </div>
+
             <button type="submit" class="btn btn-primary" id="addProjectSubmitBtn">Add project</button>
         </form>
 
@@ -125,6 +130,11 @@
                 <input type="text" class="form-control" id="updateProjectDescription" placeholder="Description...">
             </div>
 
+            <div class="form-group">
+              <label>Project url</label>
+              <input type="text" class="form-control" id="updateProjectProjectUrl" placeholder="Project url...">
+            </div>
+
             <button type="submit" class="btn btn-primary" id="updateProjectSubmitBtn">Update project</button>
         </form>
         
@@ -149,9 +159,8 @@
             <button type="submit" class="btn btn-primary" id="logoutBtn">Log out</button>
         </form>
 
-        <div class="projects">
-          
-        </div>
+
+        <div id="result" class="projects"></div>
 
         <!-- bootstrap -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
