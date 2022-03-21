@@ -74,6 +74,7 @@ $(document).ready(function() {
                     description: description,
                     username: username,
                     project_url: projectUrl
+                    user_id: userId
                 },
                 success: function(project) {
                     console.log(project);

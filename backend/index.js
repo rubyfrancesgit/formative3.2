@@ -37,8 +37,8 @@ app.post('/addProject', (req, res) => {
         name: req.body.name,
         image_url: req.body.image_url,
         description: req.body.description,
-        username: req.body.username,
         project_url: req.body.project_url
+        user_id: req.body.user_id
     });
 
     // save to the database & notifu the user

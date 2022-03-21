@@ -5,8 +5,11 @@ const projectSchema = new mongoose.Schema({
     name: String,
     image_url: String,
     description: String,
-    username: String,
     project_url: String
+    user_id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }
 });
 
 module.exports = mongoose.model('Project', projectSchema);
