@@ -37,7 +37,7 @@ app.post('/addProject', (req, res) => {
         name: req.body.name,
         image_url: req.body.image_url,
         description: req.body.description,
-        project_url: req.body.project_url
+        project_url: req.body.project_url,
         user_id: req.body.user_id
     });
 

@@ -73,7 +73,7 @@ $(document).ready(function() {
                     image_url: imgUrl,
                     description: description,
                     username: username,
-                    project_url: projectUrl
+                    project_url: projectUrl,
                     user_id: userId
                 },
                 success: function(project) {
