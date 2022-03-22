@@ -300,7 +300,7 @@ $(document).ready(function() {
 
     //------- project cards starts ---------
    
-
+    // View all cards when document is ready
     function viewProjects(){
         $.ajax({
             url: `http://${url}/allProjectsFromDB`,
@@ -314,9 +314,7 @@ $(document).ready(function() {
                 document.getElementById('result').innerHTML +=
                 `
                 <div id="${projectsFromMongo[i]._id}" class="projects__card">
-                    <button class="projects__project-options">
-                        <i class="fa-solid fa-ellipsis-vertical projects__options-icon"></i>
-                    </button>
+                    <button class="projects__project-options"></button>
                     <div class="projects__dropdown-content">
                         <a>Update</a>
                         <a>Delete</a>
@@ -334,6 +332,9 @@ $(document).ready(function() {
                 </div>
                 `;
               }
+                // hiding button by default
+                $('.projects__project-options').hide();
+
                 //placed in success function so elements can be selected afterwards
                 // adding active and displaying card content on hover
                 $('.projects__card').hover(function(){
@@ -343,15 +344,18 @@ $(document).ready(function() {
                     $('#'+this.id+' .projects__heading').removeClass('hide');
                     $('#'+this.id+' .projects__author').removeClass('hide');
                     $('#'+this.id+' .projects__description-wrap').removeClass('hide');
+                    // show card options button
+                    $('#'+this.id+' .projects__project-options').show();
                     }, function(){
                     $(this).removeClass('active');
                     // then when user leaves card hide class is added
                     $('#'+this.id+' .projects__heading').addClass('hide');
                     $('#'+this.id+' .projects__author').addClass('hide');
                     $('#'+this.id+' .projects__description-wrap').addClass('hide');
+                    // hide card options button
+                    $('#'+this.id+' .projects__project-options').hide();
                 });
                 // adding active and displaying card content on hover ends
-
                 
 
                 /* When the user clicks on the button, 
@@ -373,7 +377,7 @@ $(document).ready(function() {
 
             },
             error:function(){
-              alert('unable to get products');
+              alert('unable to get projects');
             }
         }) //ajax
     }

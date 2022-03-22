@@ -48,6 +48,7 @@ body {
   transition: width 1s ease, z-index 0.5s, filter 1s ease;
 }
 .projects__project-options {
+  display: none;
   padding: 1rem;
   position: absolute;
   top: 15px;
@@ -57,15 +58,19 @@ body {
   font-size: 2rem;
   display: inline-block;
   border: none;
+  background-image: url(../assets/options-dropdown-icon.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  z-index: 101;
+  filter: invert(99%) sepia(2%) saturate(528%) hue-rotate(199deg) brightness(117%) contrast(91%);
 }
 .projects__project-options:hover {
-  color: #B486D9;
+  cursor: pointer;
+  filter: invert(75%) sepia(29%) saturate(3587%) hue-rotate(211deg) brightness(87%) contrast(94%);
 }
 .projects__project-options:focus {
-  color: #B486D9;
-}
-.projects__options-icon {
-  z-index: -1;
+  filter: invert(75%) sepia(29%) saturate(3587%) hue-rotate(211deg) brightness(87%) contrast(94%);
 }
 .projects__dropdown-content {
   position: absolute;
@@ -74,7 +79,7 @@ body {
   overflow: auto;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   right: 0;
-  top: 60px;
+  top: 50px;
   z-index: 200;
 }
 .projects__dropdown-content a {
@@ -478,25 +483,4 @@ body {
   position: absolute;
   top: 50%;
   bottom: 0;
-}
-
-.add-project-select {
-  width: 100vw;
-  padding: 0% 0% 0% 18%;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-}
-.add-project-select__div {
-  display: flex;
-  align-items: center;
-}
-.add-project-select__p {
-  color: #B6B6B6;
-  font-family: "Open Sans", sans-serif;
-  font-size: 1.3rem;
-  margin-right: 1rem;
-  margin-bottom: 0px;
-}
-.add-project-select__icon {
-  width: 1rem;
 }
