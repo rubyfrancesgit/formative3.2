@@ -11,6 +11,22 @@
         font-size: 2.5rem;
     }
 
+    &__box {
+        height: 40px;
+        width: 80px;
+        position: relative;
+        border-bottom: 1px solid #B6B6B6;
+        margin-right: 4rem;
+    }
+
+    &__border-right {
+        border-right: 1px solid #B6B6B6;
+        position: absolute;
+        top: 50%;
+        left: 99%;
+        bottom: -3%;
+    }
+
     &__ul {
         display: flex
     }
