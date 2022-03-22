@@ -146,7 +146,7 @@ body {
 
 .nav {
   width: 100%;
-  height: 10vh;
+  height: 15vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -158,7 +158,7 @@ body {
 }
 .nav__box {
   height: 40px;
-  width: 80px;
+  width: 95px;
   position: relative;
   border-bottom: 1px solid #B6B6B6;
   margin-right: 4rem;
@@ -217,7 +217,6 @@ body {
   background: #0D0D0D;
   width: 30vw;
   height: 50vh;
-  z-index: 1;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -226,6 +225,7 @@ body {
   overflow-y: scroll;
   padding: 2rem;
   border-radius: 5px;
+  z-index: 2001;
 }
 
 .big-modal-container {
@@ -233,7 +233,6 @@ body {
   background: #0D0D0D;
   width: 35vw;
   height: 65vh;
-  z-index: 1;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -242,17 +241,42 @@ body {
   overflow-y: scroll;
   padding: 2rem;
   border-radius: 5px;
+  z-index: 2001;
+}
+
+.user-modal {
+  display: none;
+  padding: 2rem;
+  background: #0D0D0D;
+  z-index: 2001;
+  position: absolute;
+  top: 15%;
+  left: 90%;
+  transform: translate(-50%, -50%);
+}
+.user-modal__btn {
+  border: none;
+  color: #B6B6B6;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background: transparent;
+  width: 10rem;
 }
 
 .modal-background {
   display: none;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: rgba(153, 153, 153, 0.2);
+  z-index: 2000;
 }
 
 .sign-up {
@@ -374,6 +398,27 @@ body {
   bottom: 0;
 }
 
+.add-project-select {
+  width: 100vw;
+  padding: 0% 0% 0% 18%;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.add-project-select__div {
+  display: flex;
+  align-items: center;
+}
+.add-project-select__p {
+  color: #B6B6B6;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.3rem;
+  margin-right: 1rem;
+  margin-bottom: 0px;
+}
+.add-project-select__icon {
+  width: 1rem;
+}
+
 .add-project {
   width: 100%;
   height: 100%;
@@ -454,9 +499,4 @@ body {
 }
 .add-project-select__icon {
   width: 1rem;
-}
-
-body {
-  width: 100%;
-  background: cadetblue;
 }

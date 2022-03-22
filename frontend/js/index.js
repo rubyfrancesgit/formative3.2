@@ -7,27 +7,20 @@ $(document).ready(function() {
     const modalBackground = document.getElementById('modalBackground');
     const navRegisterBtn = document.getElementById('navRegisterBtn');
     const navLoginBtn = document.getElementById('navLoginBtn');
+    const searchInput = document.getElementById('searchInput');
+    const userModal = document.getElementById('userModal'); 
     let userId;
 
     $('#navRegisterBtn').click(function() {
         console.log('clicked');
-        $('#modal').empty();
         registerModal.style.display = 'block';
         modalBackground.style.display = 'block';
     });
 
     $('#navLoginBtn').click(function() {
         console.log('clicked');
-        $('#modal').empty();
         loginModal.style.display = "block";
         modalBackground.style.display = "block";
-    });
-
-    $('#modalBackground').click(function() {
-        registerModal.style.display = "none";
-        loginModal.style.display = "none";
-        addProjectModal.style.display = 'none';
-        modalBackground.style.display = "none";
     });
 
     $('#addProjectDiv').click(function() {
@@ -35,6 +28,14 @@ $(document).ready(function() {
         $('#modal').empty();
         addProjectModal.style.display = 'block';
         modalBackground.style.display = 'block';
+    });
+
+    $('#modalBackground').click(function() {
+        registerModal.style.display = "none";
+        loginModal.style.display = "none";
+        addProjectModal.style.display = 'none';
+        modalBackground.style.display = "none";
+        userModal.style.display = 'none';
     });
 
     let url;
@@ -54,9 +55,6 @@ $(document).ready(function() {
             console.log(error);
         }
     }); // end of ajax
-
-
-    
 
     // add project to database
     $('#addProjectSubmitBtn').click(function() {
@@ -263,9 +261,17 @@ $(document).ready(function() {
 
                         $('#navUl').append(
                             `
-                                <li class="nav__li">${displayName}</li>
+                                <li class="nav__li nav__name" id="navName">${displayName}</li>
                             `
-                        )
+                        );
+
+                        const navName = document.getElementById('navName');
+
+                        $('#navName').click(function() {
+                            console.log('navName clicked');
+                            userModal.style.display = 'block';
+                            modalBackground.style.display = 'block';
+                        });
 
                     } // end of inner if statements
                 }, // end of success
@@ -281,6 +287,13 @@ $(document).ready(function() {
         sessionStorage.clear();
         alert('You are now logged out');
         console.log(sessionStorage);
+        const navName = document.getElementById('navName');
+
+        navRegisterBtn.style.display = "block";
+        navLoginBtn.style.display = "block";
+        userModal.style.display = 'none';
+        modalBackground.style.display = 'none';
+        navName.style.display = 'none';
     })
 
 
@@ -316,7 +329,7 @@ $(document).ready(function() {
                     <h1 class="projects__heading hide">${projectsFromMongo[i].name}</h1>
                     <h3 class="projects__author hide">${projectsFromMongo[i].username}</h3>
                     <div class="projects__description-wrap hide">
-                        <p class="projects__description">${projectsFromMongo[i].description}</p>
+                        <p class="projects__description" id="123${projectsFromMongo[i]._id}">${projectsFromMongo[i].description}</p>
                     </div>
                 </div>
                 `;
@@ -365,6 +378,15 @@ $(document).ready(function() {
         }) //ajax
     }
     //------- project cards ends ---------
+
+    // Search project cards results
+    searchInput.addEventListener('keyup', function(event) {
+        if(event.keyCode == 13) {
+            event.preventDefault();
+            const searchTerm = $('#searchInput').val();
+
+        }
+    });
 
 
 }); // end of docuemnt ready function
