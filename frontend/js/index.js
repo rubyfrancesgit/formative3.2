@@ -277,22 +277,33 @@ $(document).ready(function() {
 
 
     //------- project cards starts ---------
+   
+
     function viewProjects(){
         $.ajax({
             url: `http://${url}/allProjectsFromDB`,
             type: 'GET',
             datatype: 'json',
             success: function(projectsFromMongo){
-                // console.log(projectsFromMongo);
+                console.log(projectsFromMongo);
                 let i;
                 document.getElementById('result').innerHTML = '';
                 for(i=0; i<projectsFromMongo.length; i++){
                 document.getElementById('result').innerHTML +=
                 `
                 <div id="${projectsFromMongo[i]._id}" class="projects__card">
-                    <div class="projects__image-wrap">
-                        <img class="projects__img" src="${projectsFromMongo[i].image_url}" alt="project image">
-                    </div>
+                    <button class="projects__project-options">
+                        <i class="fa-solid fa-ellipsis-vertical projects__options-icon"></i>
+                    </button>
+                    <div class="projects__dropdown-content">
+                        <a>Update</a>
+                        <a>Delete</a>
+                      </div>
+                    <a href="${projectsFromMongo[i].project_url}" target="blank">
+                        <div class="projects__image-wrap">
+                            <img class="projects__img" src="${projectsFromMongo[i].image_url}" alt="project image">
+                        </div>
+                    </a>
                     <h1 class="projects__heading hide">${projectsFromMongo[i].name}</h1>
                     <h3 class="projects__author hide">${projectsFromMongo[i].username}</h3>
                     <div class="projects__description-wrap hide">
@@ -318,6 +329,26 @@ $(document).ready(function() {
                     $('#'+this.id+' .projects__description-wrap').addClass('hide');
                 });
                 // adding active and displaying card content on hover ends
+
+                
+
+                /* When the user clicks on the button, 
+                toggle between hiding and showing the dropdown content */
+                $('.projects__dropdown-content').hide();
+
+                $('.projects__project-options').click(function(){
+                    let cardId = $(this).parent().attr('id');
+                    console.log(cardId);
+                    $('#'+cardId+' .projects__dropdown-content').toggle('show');
+                });
+
+                // Close the dropdown if the user clicks outside of it
+                window.onclick = function(event) {
+                  if (!event.target.matches('.projects__project-options')) {
+                    $('.projects__dropdown-content').hide();
+                  }
+                }
+
             },
             error:function(){
               alert('unable to get products');
