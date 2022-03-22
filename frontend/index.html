@@ -23,7 +23,10 @@
 
     <body>
         <nav class="nav">
-          <h1 class="nav__heading">Peruse</h1>
+          <div class="nav__box">
+            <h1 class="nav__heading">Peruse</h1>
+            <div class="nav__border-right"></div>
+          </div>
 
           <div class="nav__ul" id="navUl">
             <input class="nav__search" type="text" placeholder="Search..." id="searchInput">
@@ -35,7 +38,7 @@
           </div>
         </nav>
 
-        <div class="modal-container" id="registerModal">
+        <div class="small-modal-container" id="registerModal">
           <form class="sign-up"> 
             <h1 class="sign-up__heading">Sign up</h1>
 
@@ -58,7 +61,7 @@
           </form>
         </div>
 
-        <div class="modal-container" id="loginModal">
+        <div class="small-modal-container" id="loginModal">
           <form class="login">
             <h1 class="login__heading">Login</h1>
 
@@ -79,33 +82,9 @@
 
         <div class="modal-background" id="modalBackground"></div>
 
-        <form style="width: 60ch; padding-left: 10rem; padding-top: 10rem;">
-            <h1>Add project</h1>
+        <!-- delete this section later -->
 
-            <div class="form-group">
-              <label>Project name</label>
-              <input type="text" class="form-control" id="addProjectName" placeholder="Project name..." required>
-            </div>
-
-            <div class="form-group">
-              <label>Image</label>
-              <input type="text" class="form-control" id="addProjectImgUrl" placeholder="Image url..." required>
-            </div>
-
-            <div class="form-group">
-                <label>Description</label>
-                <input type="text" class="form-control" id="addProjectDescription" placeholder="Description..." required>
-            </div>
-
-            <div class="form-group">
-              <label>Project url</label>
-              <input type="text" class="form-control" id="addProjectProjectUrl" placeholder="Project url..." required>
-            </div>
-
-            <button type="submit" class="btn btn-primary" id="addProjectSubmitBtn">Add project</button>
-        </form>
-
-        <form style="width: 60ch; padding-left: 10rem; padding-top: 10rem;">
+        <form class="hide" style="width: 60ch; padding-left: 10rem; padding-top: 10rem;">
             <h1>Update project</h1>
 
             <div class="form-group">
@@ -136,7 +115,7 @@
             <button type="submit" class="btn btn-primary" id="updateProjectSubmitBtn">Update project</button>
         </form>
         
-        <form style="width: 60ch; padding-left: 10rem; padding-top: 10rem;">
+        <form class="hide" style="width: 60ch; padding-left: 10rem; padding-top: 10rem;">
             <h1>Delete project</h1>
 
             <div class="form-group">
@@ -149,11 +128,47 @@
 
         
         <form style="width: 60ch; padding-left: 10rem; padding-top: 10rem;">
+
+        <form class="hide" style="width: 60ch; padding-left: 10rem; padding-top: 10rem;">
             <h1>Logout</h1>
         
             <button type="submit" class="btn btn-primary" id="logoutBtn">Log out</button>
         </form>
+        <!-- end delete this section later -->
 
+        <div class="add-project-select">
+          <div class="add-project-select__div" id="addProjectDiv">
+            <p class="add-project-select__p">Add project</p>
+            <img class="add-project-select__icon" src="./assets/plus-icon.svg" alt="plus icon">
+          </div>
+        </div>
+
+        <div class="big-modal-container" id="addProjectModal">
+          <form class="add-project">
+            <h1 class="add-project__heading">Add project</h1>
+
+            <div class="form-group">
+              <input class="add-project__input" type="text" id="addProjectName" placeholder="Project name..." required>
+            </div>
+
+            <div class="form-group">
+              <input class="add-project__input" type="text" id="addProjectImgUrl" placeholder="Image url..." required>
+            </div>
+
+            <div class="form-group">
+                <input class="add-project__input" type="text" id="addProjectDescription" placeholder="Description..." required>
+            </div>
+
+            <div class="form-group">
+              <input class="add-project__input" type="text" id="addProjectProjectUrl" placeholder="Project url..." required>
+            </div>
+
+            <div class="add-project__box">
+              <button class="add-project__btn" type="submit" class="btn btn-primary" id="addProjectSubmitBtn">Add project</button>
+              <div class="add-project__border-left"></div>
+            </div>
+          </form>
+        </div>
 
         <div id="result" class="projects"></div>
 

@@ -1,0 +1,21 @@
+.add-project-select {
+    width: 100vw;
+    padding: 0% 0% 0% 18%;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+
+    &__div {
+        display: flex;
+        align-items: center;
+    }
+
+    &__p {
+        @include text;
+        margin-right: 1rem;
+        margin-bottom: 0px;
+    }
+
+    &__icon {
+        width: 1rem;
+    }
+}
