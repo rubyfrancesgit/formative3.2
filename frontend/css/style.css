@@ -47,6 +47,46 @@ body {
   filter: grayscale(100%);
   transition: width 1s ease, z-index 0.5s, filter 1s ease;
 }
+.projects__project-options {
+  padding: 1rem;
+  position: absolute;
+  top: 15px;
+  right: 12px;
+  background: none;
+  color: #ffffff;
+  font-size: 2rem;
+  display: inline-block;
+  border: none;
+}
+.projects__project-options:hover {
+  color: #B486D9;
+}
+.projects__project-options:focus {
+  color: #B486D9;
+}
+.projects__options-icon {
+  z-index: -1;
+}
+.projects__dropdown-content {
+  position: absolute;
+  background-color: #000000;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  right: 0;
+  top: 60px;
+  z-index: 200;
+}
+.projects__dropdown-content a {
+  color: #ffffff;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+.projects__dropdown-content a:hover {
+  background-color: #B486D9;
+  cursor: pointer;
+}
 .projects__image-wrap {
   height: 100%;
   width: 100%;
@@ -343,12 +383,10 @@ body {
   flex-direction: column;
   padding-right: 5rem;
 }
-
 .add-project__heading {
   padding-right: 30%;
   margin-bottom: 3rem;
 }
-
 .add-project__input {
   border: none;
   color: #B6B6B6;
@@ -362,13 +400,11 @@ body {
   border-bottom: 1px solid #B6B6B6;
   margin-bottom: 2rem;
 }
-
 .add-project__input::placeholder {
   color: #B6B6B6;
   font-family: "Open Sans", sans-serif;
   font-size: 1.3rem;
 }
-
 .add-project__btn {
   border: none;
   color: #B6B6B6;
@@ -385,7 +421,6 @@ body {
   padding-right: 1rem;
   margin-top: 1rem;
 }
-
 .add-project__box {
   height: 40px;
   width: 20px;
@@ -393,7 +428,6 @@ body {
   border-bottom: 1px solid #B6B6B6;
   margin-right: 4rem;
 }
-
 .add-project__border-left {
   border-left: 1px solid #B6B6B6;
   position: absolute;
@@ -407,12 +441,10 @@ body {
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
-
 .add-project-select__div {
   display: flex;
   align-items: center;
 }
-
 .add-project-select__p {
   color: #B6B6B6;
   font-family: "Open Sans", sans-serif;
@@ -420,7 +452,6 @@ body {
   margin-right: 1rem;
   margin-bottom: 0px;
 }
-
 .add-project-select__icon {
   width: 1rem;
 }
