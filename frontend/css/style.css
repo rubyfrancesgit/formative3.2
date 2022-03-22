@@ -116,6 +116,20 @@ body {
 .nav__heading {
   font-size: 2.5rem;
 }
+.nav__box {
+  height: 40px;
+  width: 80px;
+  position: relative;
+  border-bottom: 1px solid #B6B6B6;
+  margin-right: 4rem;
+}
+.nav__border-right {
+  border-right: 1px solid #B6B6B6;
+  position: absolute;
+  top: 50%;
+  left: 99%;
+  bottom: -3%;
+}
 .nav__ul {
   display: flex;
 }
@@ -158,11 +172,27 @@ body {
   margin-right: 1rem;
 }
 
-.modal-container {
+.small-modal-container {
   display: none;
   background: #0D0D0D;
   width: 30vw;
   height: 50vh;
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 2px solid black;
+  overflow-y: scroll;
+  padding: 2rem;
+  border-radius: 5px;
+}
+
+.big-modal-container {
+  display: none;
+  background: #0D0D0D;
+  width: 35vw;
+  height: 65vh;
   z-index: 1;
   position: absolute;
   top: 50%;
@@ -302,4 +332,100 @@ body {
   position: absolute;
   top: 50%;
   bottom: 0;
+}
+
+.add-project {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-direction: column;
+  padding-right: 5rem;
+}
+
+.add-project__heading {
+  padding-right: 30%;
+  margin-bottom: 3rem;
+}
+
+.add-project__input {
+  border: none;
+  color: #B6B6B6;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background: transparent;
+  border-bottom: 1px solid #B6B6B6;
+  margin-bottom: 2rem;
+}
+
+.add-project__input::placeholder {
+  color: #B6B6B6;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.3rem;
+}
+
+.add-project__btn {
+  border: none;
+  color: #B6B6B6;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background: transparent;
+  width: 10rem;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-top: 1rem;
+}
+
+.add-project__box {
+  height: 40px;
+  width: 20px;
+  position: relative;
+  border-bottom: 1px solid #B6B6B6;
+  margin-right: 4rem;
+}
+
+.add-project__border-left {
+  border-left: 1px solid #B6B6B6;
+  position: absolute;
+  top: 50%;
+  bottom: 0;
+}
+
+.add-project-select {
+  width: 100vw;
+  padding: 0% 0% 0% 18%;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.add-project-select__div {
+  display: flex;
+  align-items: center;
+}
+
+.add-project-select__p {
+  color: #B6B6B6;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.3rem;
+  margin-right: 1rem;
+  margin-bottom: 0px;
+}
+
+.add-project-select__icon {
+  width: 1rem;
+}
+
+body {
+  width: 100%;
+  background: cadetblue;
 }

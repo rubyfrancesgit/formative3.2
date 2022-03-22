@@ -3,6 +3,7 @@ $(document).ready(function() {
 
     const registerModal = document.getElementById('registerModal');
     const loginModal = document.getElementById('loginModal');
+    const addProjectModal = document.getElementById('addProjectModal');
     const modalBackground = document.getElementById('modalBackground');
     const navRegisterBtn = document.getElementById('navRegisterBtn');
     const navLoginBtn = document.getElementById('navLoginBtn');
@@ -25,7 +26,15 @@ $(document).ready(function() {
     $('#modalBackground').click(function() {
         registerModal.style.display = "none";
         loginModal.style.display = "none";
+        addProjectModal.style.display = 'none';
         modalBackground.style.display = "none";
+    });
+
+    $('#addProjectDiv').click(function() {
+        console.log('clicked');
+        $('#modal').empty();
+        addProjectModal.style.display = 'block';
+        modalBackground.style.display = 'block';
     });
 
     let url;
