@@ -1,6 +1,6 @@
 @font-face {
-  font-family: haettenschweiler, sans-serif;
-  src: url(../fonts/haetten.ttf);
+  font-family: "haettenschweiler", sans-serif;
+  src: url(../fonts/Haettenschweiler-Regular.ttf);
 }
 * {
   padding: 0;
@@ -106,17 +106,17 @@ body {
   z-index: -1;
 }
 .projects__heading {
-  width: 15ch;
-  font-size: 10rem;
+  width: 11ch;
+  font-size: 9rem;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  font-family: haettenschweiler, sans-serif;
+  font-family: "Oswald", sans-serif;
   z-index: 101;
-  line-height: 0.8;
-  letter-spacing: 0.12em;
+  line-height: 1;
+  letter-spacing: -0.02em;
   text-transform: uppercase;
   color: #ffffff;
 }
@@ -128,6 +128,7 @@ body {
   z-index: 101;
   font-family: "Bebas Neue", cursive;
   color: #ffffff;
+  letter-spacing: 0.1em;
 }
 .projects__description-wrap {
   width: 114%;
@@ -149,46 +150,75 @@ body {
   filter: grayscale(0%);
 }
 
+/* Medium Devices (Tablets) */
+@media (min-width:601px) and (max-width:1023px) {
+  .projects {
+    padding: 5% 4% 5% 40%;
+    gap: 21rem 1.5rem;
+    cursor: pointer;
+  }
+  .projects__heading {
+    width: 11ch;
+    font-size: 6.2rem;
+  }
+  .projects__portfolio-link {
+    pointer-events: none;
+  }
+  .projects__description-wrap {
+    width: 100%;
+    bottom: -15rem;
+  }
+  .projects__description {
+    text-align: left;
+  }
+
+  .active {
+    width: 375px;
+  }
+}
+/* Small Devices (Mobile) */
 .nav {
   width: 100%;
   height: 15vh;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   padding-left: 5rem;
   padding-right: 3rem;
 }
 .nav__heading {
-  font-size: 2.5rem;
+  width: 172px;
+  padding-top: 20px;
+  filter: invert(99%) sepia(2%) saturate(528%) hue-rotate(199deg) brightness(117%) contrast(91%);
 }
-.nav__box {
-  height: 40px;
-  width: 95px;
-  position: relative;
-  border-bottom: 1px solid #B6B6B6;
-  margin-right: 4rem;
-}
-.nav__border-right {
-  border-right: 1px solid #B6B6B6;
-  position: absolute;
-  top: 50%;
-  left: 99%;
-  bottom: -3%;
+.nav__heading:hover {
+  cursor: pointer;
+  filter: invert(75%) sepia(29%) saturate(3587%) hue-rotate(211deg) brightness(87%) contrast(94%);
 }
 .nav__ul {
   display: flex;
+  align-items: center;
+  text-align: center;
 }
 .nav__li {
   width: 8rem;
   margin-left: 1rem;
   margin-right: 1rem;
+  font-size: 1.4rem;
+  padding: 1rem;
+  letter-spacing: 0.05em;
+}
+.nav__li:hover {
+  color: #B486D9;
+  border-bottom: 1px solid #B486D9;
 }
 .nav__search {
-  width: 8rem;
+  width: 12vw;
   border: none;
   color: #B6B6B6;
   font-family: "Open Sans", sans-serif;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -196,18 +226,26 @@ body {
   background: transparent;
   margin-left: 1rem;
   margin-right: 1rem;
+  border-bottom: 1px solid #616161;
+  padding: 1rem;
+  letter-spacing: 0.05em;
+  text-align: right;
+}
+.nav__search:hover {
+  color: #B486D9;
+  border-bottom: 1px solid #B486D9;
 }
 .nav__search::placeholder {
   color: #B6B6B6;
   font-family: "Open Sans", sans-serif;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
 }
 .nav__select {
-  width: 8rem;
+  width: 9.2rem;
   border: none;
   color: #B6B6B6;
   font-family: "Open Sans", sans-serif;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -215,8 +253,51 @@ body {
   background: transparent;
   margin-left: 1rem;
   margin-right: 1rem;
+  border: none;
+  padding: 1rem;
+  letter-spacing: 0.05em;
+}
+.nav__select:hover {
+  color: #B486D9;
+  border-bottom: 1px solid #B486D9;
 }
 
+#navLoginBtn {
+  border: 1px solid #B6B6B6;
+  padding: 1rem;
+}
+#navLoginBtn:hover {
+  color: #ffffff;
+  background: #B486D9;
+  border: 1px solid #B486D9;
+}
+
+/* Medium Devices (Tablets) */
+@media (min-width:601px) and (max-width:1023px) {
+  .nav__heading {
+    width: 110px;
+    padding-top: 20px;
+  }
+  .nav__ul {
+    flex-flow: column-reverse wrap;
+    align-items: flex-end;
+    width: 36%;
+    padding-top: 3rem;
+  }
+  .nav__li {
+    font-size: 1.2rem;
+  }
+  .nav__search {
+    width: 100%;
+  }
+  .nav__search::placeholder {
+    font-size: 1.2rem;
+  }
+  .nav__select {
+    font-size: 1.2rem;
+  }
+}
+/* Small Devices (Mobile) */
 .small-modal-container {
   display: none;
   background: #0D0D0D;
@@ -263,7 +344,7 @@ body {
   border: none;
   color: #B6B6B6;
   font-family: "Open Sans", sans-serif;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -296,12 +377,13 @@ body {
 .sign-up__heading {
   padding-right: 50%;
   margin-bottom: 3rem;
+  font-family: "Oswald", sans-serif;
 }
 .sign-up__input {
   border: none;
   color: #B6B6B6;
   font-family: "Open Sans", sans-serif;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -313,13 +395,13 @@ body {
 .sign-up__input::placeholder {
   color: #B6B6B6;
   font-family: "Open Sans", sans-serif;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
 }
 .sign-up__btn {
   border: none;
   color: #B6B6B6;
   font-family: "Open Sans", sans-serif;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -330,6 +412,9 @@ body {
   padding-left: 1rem;
   padding-right: 1rem;
   margin-top: 1rem;
+}
+.sign-up__btn:hover {
+  color: #B486D9;
 }
 .sign-up__box {
   height: 40px;
@@ -361,7 +446,7 @@ body {
   border: none;
   color: #B6B6B6;
   font-family: "Open Sans", sans-serif;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -373,13 +458,13 @@ body {
 .login__input::placeholder {
   color: #B6B6B6;
   font-family: "Open Sans", sans-serif;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
 }
 .login__btn {
   border: none;
   color: #B6B6B6;
   font-family: "Open Sans", sans-serif;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -404,7 +489,7 @@ body {
 }
 
 .add-project-select {
-  width: 100vw;
+  width: 100%;
   padding: 0% 0% 0% 18%;
   padding-top: 1rem;
   padding-bottom: 1rem;
@@ -413,15 +498,26 @@ body {
   display: flex;
   align-items: center;
 }
+.add-project-select__div:hover {
+  cursor: pointer;
+}
 .add-project-select__p {
   color: #B6B6B6;
   font-family: "Open Sans", sans-serif;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   margin-right: 1rem;
   margin-bottom: 0px;
+  letter-spacing: 0.05em;
+}
+.add-project-select__p:hover {
+  color: #B486D9;
 }
 .add-project-select__icon {
   width: 1rem;
+  filter: invert(99%) sepia(2%) saturate(528%) hue-rotate(199deg) brightness(117%) contrast(91%);
+}
+.add-project-select__icon:hover {
+  filter: invert(75%) sepia(29%) saturate(3587%) hue-rotate(211deg) brightness(87%) contrast(94%);
 }
 
 .add-project {
@@ -436,12 +532,13 @@ body {
 .add-project__heading {
   padding-right: 30%;
   margin-bottom: 3rem;
+  font-family: "Oswald", sans-serif;
 }
 .add-project__input {
   border: none;
   color: #B6B6B6;
   font-family: "Open Sans", sans-serif;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -453,13 +550,13 @@ body {
 .add-project__input::placeholder {
   color: #B6B6B6;
   font-family: "Open Sans", sans-serif;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
 }
 .add-project__btn {
   border: none;
   color: #B6B6B6;
   font-family: "Open Sans", sans-serif;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -470,6 +567,9 @@ body {
   padding-left: 1rem;
   padding-right: 1rem;
   margin-top: 1rem;
+}
+.add-project__btn:hover {
+  color: #B486D9;
 }
 .add-project__box {
   height: 40px;
@@ -484,3 +584,33 @@ body {
   top: 50%;
   bottom: 0;
 }
+
+/* Medium Devices (Tablets) */
+@media (min-width:601px) and (max-width:1023px) {
+  .add-project-select__p {
+    font-size: 1.2rem;
+  }
+  .add-project-select__icon {
+    width: 0.8rem;
+  }
+}
+/* Small Devices (Mobile) */
+.tagline {
+  font-family: "Oswald", sans-serif;
+  text-transform: uppercase;
+  font-size: 2.5rem;
+  padding: 10rem 0 8rem 5rem;
+  color: #B6B6B6;
+}
+.tagline:hover {
+  color: #B486D9;
+}
+
+/* Medium Devices (Tablets) */
+@media (min-width:601px) and (max-width:1023px) {
+  .tagline {
+    font-size: 1.8rem;
+    padding: 10rem 0 6rem 4rem;
+  }
+}
+/* Small Devices (Mobile) */

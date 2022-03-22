@@ -48,7 +48,7 @@ $(document).ready(function() {
         success: function(configData) {
             console.log(configData.SERVER_URL, configData.SERVER_PORT);
             url = `${configData.SERVER_URL}:${configData.SERVER_PORT}`;
-            console.log(url);
+            // console.log(url);
             viewProjects(); //called here to use url in allProjectsFromDB on page load
         },
         error: function(error) {
@@ -307,11 +307,12 @@ $(document).ready(function() {
             type: 'GET',
             datatype: 'json',
             success: function(projectsFromMongo){
-                console.log(projectsFromMongo);
+                // console.log(projectsFromMongo);
                 let i;
                 document.getElementById('result').innerHTML = '';
                 for(i=0; i<projectsFromMongo.length; i++){
                 document.getElementById('result').innerHTML +=
+                // Adding project-card elements here
                 `
                 <div id="${projectsFromMongo[i]._id}" class="projects__card">
                     <button class="projects__project-options"></button>
@@ -319,7 +320,7 @@ $(document).ready(function() {
                         <a>Update</a>
                         <a>Delete</a>
                       </div>
-                    <a href="${projectsFromMongo[i].project_url}" target="blank">
+                    <a class="projects__portfolio-link" href="${projectsFromMongo[i].project_url}" target="blank">
                         <div class="projects__image-wrap">
                             <img class="projects__img" src="${projectsFromMongo[i].image_url}" alt="project image">
                         </div>
@@ -332,30 +333,66 @@ $(document).ready(function() {
                 </div>
                 `;
               }
+                // following runs in success function so elements can be selected afterwards
+
                 // hiding button by default
                 $('.projects__project-options').hide();
 
-                //placed in success function so elements can be selected afterwards
-                // adding active and displaying card content on hover
-                $('.projects__card').hover(function(){
-                    console.log(url);
-                    $(this).addClass('active');
-                    // then when card is hovered over hide class is removed
-                    $('#'+this.id+' .projects__heading').removeClass('hide');
-                    $('#'+this.id+' .projects__author').removeClass('hide');
-                    $('#'+this.id+' .projects__description-wrap').removeClass('hide');
-                    // show card options button
-                    $('#'+this.id+' .projects__project-options').show();
-                    }, function(){
-                    $(this).removeClass('active');
-                    // then when user leaves card hide class is added
-                    $('#'+this.id+' .projects__heading').addClass('hide');
-                    $('#'+this.id+' .projects__author').addClass('hide');
-                    $('#'+this.id+' .projects__description-wrap').addClass('hide');
-                    // hide card options button
-                    $('#'+this.id+' .projects__project-options').hide();
-                });
-                // adding active and displaying card content on hover ends
+                
+                
+
+                // when at tablet size or less add active on click,
+                // else add active on hover
+                if ($(window).width() < 1023) {
+                    // adding active and displaying card content on click
+                    $('.projects__card').click(function(){
+                        $(this).addClass('active');
+                        // then when card is hovered over hide class is removed
+                        $('#'+this.id+' .projects__heading').removeClass('hide');
+                        $('#'+this.id+' .projects__author').removeClass('hide');
+                        $('#'+this.id+' .projects__description-wrap').removeClass('hide');
+                        // show card options button
+                        $('#'+this.id+' .projects__project-options').show();
+                    });
+
+                    // Close the active card if the user clicks outside of it
+                    $(window).click(function() {
+                        $('.projects__card').removeClass('active');
+                        // then when user leaves card hide class is added
+                        $('.projects__heading').addClass('hide');
+                        $('.projects__author').addClass('hide');
+                        $('.projects__description-wrap').addClass('hide');
+                        // hide card options button
+                        $('.projects__project-options').hide();
+                    });
+
+                    $('.projects__card').click(function(event){
+                      event.stopPropagation();
+                    });
+                }
+                else {
+                    // adding active and displaying card content on hover
+                    $('.projects__card').hover(function(){
+                        // console.log(url);
+                        $(this).addClass('active');
+                        // then when card is hovered over hide class is removed
+                        $('#'+this.id+' .projects__heading').removeClass('hide');
+                        $('#'+this.id+' .projects__author').removeClass('hide');
+                        $('#'+this.id+' .projects__description-wrap').removeClass('hide');
+                        // show card options button
+                        $('#'+this.id+' .projects__project-options').show();
+                        }, function(){
+                        $(this).removeClass('active');
+                        // then when user leaves card hide class is added
+                        $('#'+this.id+' .projects__heading').addClass('hide');
+                        $('#'+this.id+' .projects__author').addClass('hide');
+                        $('#'+this.id+' .projects__description-wrap').addClass('hide');
+                        // hide card options button
+                        $('#'+this.id+' .projects__project-options').hide();
+                    });
+                }
+
+                
                 
 
                 /* When the user clicks on the button, 

@@ -70,6 +70,7 @@
     &__heading {
         padding-right: 50%;
         margin-bottom: 3rem;
+        font-family: $heading-font;
     }
 
     &__input {
@@ -89,6 +90,9 @@
         padding-left: 1rem;
         padding-right: 1rem;
         margin-top: 1rem;
+        &:hover{
+            color: $purple;
+        }
     }
 
     &__box {
