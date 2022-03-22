@@ -3,7 +3,6 @@
     background: #0D0D0D;
     width: 30vw;
     height: 50vh;
-    z-index: 1;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -12,6 +11,7 @@
     overflow-y: scroll;
     padding: 2rem;
     border-radius: 5px;
+    z-index: 2001;
 }
 
 .big-modal-container {
@@ -19,7 +19,6 @@
     background: #0D0D0D;
     width: 35vw;
     height: 65vh;
-    z-index: 1;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -28,17 +27,35 @@
     overflow-y: scroll;
     padding: 2rem;
     border-radius: 5px;
+    z-index: 2001;
+}
+
+.user-modal {
+    display: none;
+    padding: 2rem;
+    background: #0D0D0D;
+    z-index: 2001;
+    position: absolute;
+    top: 15%;
+    left: 90%;
+    transform: translate(-50%,-50%);
+
+    &__btn {
+        @include input;
+        width: 10rem;
+    }
 }
 
 .modal-background {
     display: none;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
     background: rgba(153, 153, 153, 0.2);
+    z-index: 2000;
 }
 
 .sign-up {
@@ -126,55 +143,6 @@
         width: 20px;
         position: relative;
         border-bottom: 1px solid #B6B6B6;
-    }
-
-    &__border-left {
-        border-left: 1px solid #B6B6B6;
-        position: absolute;
-        top: 50%;
-        bottom: 0;
-    }
-}
-
-.add-project {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    flex-direction: column;
-    padding-right: 5rem;
-
-    &__heading {
-        padding-right: 30%;
-        margin-bottom: 3rem;
-    }
-
-    &__input {
-        @include input;
-        border-bottom: 1px solid #B6B6B6;
-        margin-bottom: 2rem;
-    }
-
-    &__input::placeholder {
-        @include text;
-    }
-
-    &__btn {
-        @include input;
-        width: 10rem;
-        padding-bottom: 1rem;
-        padding-left: 1rem;
-        padding-right: 1rem;
-        margin-top: 1rem;
-    }
-
-    &__box {
-        height: 40px;
-        width: 20px;
-        position: relative;
-        border-bottom: 1px solid #B6B6B6;
-        margin-right: 4rem;
     }
 
     &__border-left {

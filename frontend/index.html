@@ -31,7 +31,7 @@
           </div>
 
           <div class="nav__ul" id="navUl">
-            <input class="nav__search" type="text" placeholder="Search..." id="searchInput">
+            <input class="nav__search" type="text" placeholder="Search..." id="searchInput" autocomplete="off">
             <select class="nav__select" id="sortBy">
               <option value="">Sort by</option>
             </select>
@@ -39,6 +39,10 @@
             <li class="nav__li" id="navLoginBtn">Login</li>
           </div>
         </nav>
+
+        <div class="user-modal" id="userModal">
+          <button class="user-modal__btn" type="submit" id="logoutBtn">Log out</button>
+        </div>
 
         <div class="small-modal-container" id="registerModal">
           <form class="sign-up"> 
@@ -131,9 +135,9 @@
         <form style="width: 60ch; padding-left: 10rem; padding-top: 10rem;">
 
         <form class="hide" style="width: 60ch; padding-left: 10rem; padding-top: 10rem;">
-            <h1>Logout</h1>
+            <h1 class="hide">Logout</h1>
         
-            <button type="submit" class="btn btn-primary" id="logoutBtn">Log out</button>
+            <button class="hide" type="submit" class="btn btn-primary" id="logoutBtn">Log out</button>
         </form>
         <!-- end delete this section later -->
 
