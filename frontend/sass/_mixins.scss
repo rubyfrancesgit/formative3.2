@@ -5,8 +5,8 @@
 }
 
 @mixin text {
-    color: #B6B6B6;
-    font-family: 'Open Sans', sans-serif;
+    color: $med-grey;
+    font-family: $body-font;
     font-size: 1.3rem;
 }
 

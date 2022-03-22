@@ -1,60 +1,75 @@
 .projects{
-    background: coral;
+    // background: coral;
     width: 100%;
     min-height: 50px;
     display: grid;
-    padding: 5% 4% 5% 18%;
+    padding: 5% 4% 5% 19%;
     grid-template-columns: repeat(auto-fit, 150px);
-    gap: 12rem 1.5rem;
+    gap: 17rem 1.5rem;
     direction: rtl;
     
     &__card{
-        min-height: 582px;
+        height: 582px;
         position: relative;
         width: 150px;
         z-index: 0;
         filter: grayscale(100%);
         transition: width 1s ease, z-index 0.5s, filter 1s ease;
     }
+    &__image-wrap{
+        height: 100%;
+        width: 100%;
+        background: linear-gradient(193.27deg, rgba(0, 0, 0, 0.46) 7.07%, rgba(0, 0, 0, 0.14) 25.73%, rgba(0, 0, 0, 0.47) 49.89%, rgba(0, 0, 0, 0.14) 72.32%, rgba(0, 0, 0, 0.46) 91.27%);
+    }
     &__img{
+        position: relative;
         height: 100%;
         width: 100%;
         object-fit: cover;
         object-position: center;
-        
-    }
+        z-index: -1;
+        }
     &__heading{
-        font-size: 5rem;
-        z-index: 1;
+        width: 15ch;
+        font-size: 10rem;
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         text-align: center;
         font-family: $heading-font;
-        z-index: 11;
+        z-index: 101;
+        line-height: 0.8;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: $white;
     }
     &__author{
-        font-size: 2rem;
-        z-index: 1;
+        font-size: 2.7rem;
         position: absolute;
         bottom: 5%;
         left: 5%;
-        z-index: 11;
+        z-index: 101;
+        font-family: $condensed-font;
+        color: $white;
+    }
+    &__description-wrap{
+        width: 114%;
+        height: 14rem;
+        position: absolute;
+        bottom: -16rem;
+        left: 50%;
+        transform: translate(-50%, 0%);
+        z-index: 101;
     }
     &__description{
-        font-size: 1.7rem;
-        position: absolute;
-        bottom: -10rem;
-        left: 50%;
-        transform: translate(-50%, 0);
         text-align: center;
-        z-index: 11;
+        color: $light-purple;
     }
 }
 
 .active{
     width: 482px;
-    z-index: 10;
+    z-index: 100;
     filter: grayscale(0%);
 }

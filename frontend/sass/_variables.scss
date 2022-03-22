@@ -3,10 +3,20 @@ $desktop: "(min-width:1024px)";
 $tablet: "(min-width:601px) and (max-width:1023px)";
 $mobile: "(max-width: 600px)";
 
-
+// fonts
 @font-face {
     font-family: haettenschweiler, sans-serif;
     src: url(../fonts/haetten.ttf);
 }
 
 $heading-font: haettenschweiler, sans-serif;
+$condensed-font: 'Bebas Neue', cursive;
+$body-font: 'Open Sans', sans-serif;
+
+// colours
+$dark-gray: #0D0D0D;
+$med-grey: #B6B6B6;
+$purple: #B486D9;
+$light-purple: #E7D4F6;
+$white: #ffffff;
+$black: #000000;
