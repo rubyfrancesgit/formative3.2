@@ -3,7 +3,7 @@
     width: 100%;
     min-height: 50px;
     display: grid;
-    padding: 5% 4% 5% 19%;
+    padding: 1% 4% 5% 19%;
     grid-template-columns: repeat(auto-fit, 150px);
     gap: 17rem 1.5rem;
     direction: rtl;
@@ -26,6 +26,7 @@
         font-size: 2rem;
         display: inline-block;
         border: none;
+        z-index: 3000;
         &:hover{
             color: $purple;
         }

@@ -4,6 +4,8 @@ $(document).ready(function() {
     const registerModal = document.getElementById('registerModal');
     const loginModal = document.getElementById('loginModal');
     const addProjectModal = document.getElementById('addProjectModal');
+    const updateProjectModal = document.getElementById('updateProjectModal');
+    const deleteProjectModal = document.getElementById('deleteProjectModal');
     const modalBackground = document.getElementById('modalBackground');
     const navRegisterBtn = document.getElementById('navRegisterBtn');
     const navLoginBtn = document.getElementById('navLoginBtn');
@@ -11,35 +13,34 @@ $(document).ready(function() {
     const userModal = document.getElementById('userModal'); 
     let userId;
 
+    // displays registration modal
     $('#navRegisterBtn').click(function() {
         console.log('clicked');
         registerModal.style.display = 'block';
         modalBackground.style.display = 'block';
     });
 
+    // displays login modal
     $('#navLoginBtn').click(function() {
         console.log('clicked');
         loginModal.style.display = "block";
         modalBackground.style.display = "block";
     });
-
-    $('#addProjectDiv').click(function() {
-        console.log('clicked');
-        $('#modal').empty();
-        addProjectModal.style.display = 'block';
-        modalBackground.style.display = 'block';
-    });
-
+    
+    // hides modals
     $('#modalBackground').click(function() {
         registerModal.style.display = "none";
         loginModal.style.display = "none";
         addProjectModal.style.display = 'none';
         modalBackground.style.display = "none";
         userModal.style.display = 'none';
+        updateProjectModal.style.display = 'none';
+        deleteProjectModal.style.display = 'none';
     });
 
     let url;
     
+    // getting data from config.json
     $.ajax({
         url: 'config.json',
         type: 'GET',
@@ -191,6 +192,7 @@ $(document).ready(function() {
                     if(user !== 'Username already taken. Please use a different username') {
                         alert('Thank you for registering. Please login');
 
+                        // clearing inputs
                         $('#signUpUsername').val('');
                         $('#signUpEmail').val('');
                         $('#signUpPassword').val('');
@@ -200,6 +202,7 @@ $(document).ready(function() {
                     } else {
                         alert('Username already taken. Please use a different username');
 
+                        // clearing inputs
                         $('#signUpUsername').val('');
                         $('#signUpEmail').val('');
                         $('#signUpPassword').val('');
@@ -239,14 +242,17 @@ $(document).ready(function() {
                     } else if(user == 'not authorized') {
                         alert('Please try again with the correct details');
 
+                        // clearing inputs
                         $('#loginUsername').val('');
                         $('#loginPassword').val('');
                     } else {
+                        // storing logged-in user's details
                         sessionStorage.setItem('userID', user['_id']);
                         sessionStorage.setItem('userName', user['username']);
                         sessionStorage.setItem('userEmail', user['email']);
                         console.log(sessionStorage);
                         
+                        // clearing inputs
                         $('#loginUsername').val('');
                         $('#loginPassword').val('');
 
@@ -259,14 +265,32 @@ $(document).ready(function() {
                         let displayName = sessionStorage.getItem('userName');
                         console.log(displayName);
 
+                        // displaying user's details when logged in
                         $('#navUl').append(
                             `
                                 <li class="nav__li nav__name" id="navName">${displayName}</li>
                             `
                         );
 
-                        const navName = document.getElementById('navName');
+                        // displaying option to add project when logged in
+                        $('#addProjectContainer').append(
+                            `
+                                <div class="add-project-select__div" id="addProjectDiv">
+                                    <p class="add-project-select__p">Add project</p>
+                                    <img class="add-project-select__icon" src="./assets/plus-icon.svg" alt="plus icon">
+                                </div>
+                            `
+                        );
 
+                        // displays add project modal
+                        $('#addProjectDiv').click(function() {
+                            console.log('clicked');
+                            $('#modal').empty();
+                            addProjectModal.style.display = 'block';
+                            modalBackground.style.display = 'block';
+                        });
+
+                        // displays user modal - logout section
                         $('#navName').click(function() {
                             console.log('navName clicked');
                             userModal.style.display = 'block';
@@ -289,6 +313,7 @@ $(document).ready(function() {
         console.log(sessionStorage);
         const navName = document.getElementById('navName');
 
+        // changes nav setup to what a logged out user would see
         navRegisterBtn.style.display = "block";
         navLoginBtn.style.display = "block";
         userModal.style.display = 'none';
@@ -301,6 +326,7 @@ $(document).ready(function() {
     //------- project cards starts ---------
    
 
+    // view projects from db
     function viewProjects(){
         $.ajax({
             url: `http://${url}/allProjectsFromDB`,
@@ -318,8 +344,8 @@ $(document).ready(function() {
                         <i class="fa-solid fa-ellipsis-vertical projects__options-icon"></i>
                     </button>
                     <div class="projects__dropdown-content">
-                        <a>Update</a>
-                        <a>Delete</a>
+                        <a class="updateBtn">Update</a>
+                        <a class="deleteBtn">Delete</a>
                       </div>
                     <a href="${projectsFromMongo[i].project_url}" target="blank">
                         <div class="projects__image-wrap">
@@ -333,6 +359,24 @@ $(document).ready(function() {
                     </div>
                 </div>
                 `;
+
+                // displays update project modal
+                $('.updateBtn').click(function() {
+                    console.log('update clicked');
+
+                    updateProjectModal.style.display = 'block';
+                    modalBackground.style.display = 'block';
+                });
+
+                // displays delete project modal
+                $('.deleteBtn').click(function() {
+                    console.log('delete clicked');
+
+                    deleteProjectModal.style.display = 'block';
+                    modalBackground.style.display = 'block';
+                });
+
+                
               }
                 //placed in success function so elements can be selected afterwards
                 // adding active and displaying card content on hover
@@ -365,11 +409,11 @@ $(document).ready(function() {
                 });
 
                 // Close the dropdown if the user clicks outside of it
-                window.onclick = function(event) {
-                  if (!event.target.matches('.projects__project-options')) {
-                    $('.projects__dropdown-content').hide();
-                  }
-                }
+                // window.onclick = function(event) {
+                //   if (!event.target.matches('.projects__project-options')) {
+                //     $('.projects__dropdown-content').hide();
+                //   }
+                // }
 
             },
             error:function(){
@@ -384,9 +428,8 @@ $(document).ready(function() {
         if(event.keyCode == 13) {
             event.preventDefault();
             const searchTerm = $('#searchInput').val();
-
         }
-    });
+    }); // End of search project cards results
 
 
 }); // end of docuemnt ready function

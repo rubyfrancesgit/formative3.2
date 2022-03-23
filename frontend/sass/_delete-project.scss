@@ -1,28 +1,4 @@
-.add-project-select {
-    width: 100vw;
-    padding: 0% 0% 0% 26%;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-
-    &__div {
-        width: 10rem;
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-    }
-
-    &__p {
-        @include text;
-        margin-right: 1rem;
-        margin-bottom: 0px;
-    }
-
-    &__icon {
-        width: 1rem;
-    }
-}
-
-.add-project {
+.delete-project {
     width: 100%;
     height: 100%;
     display: flex;
@@ -48,7 +24,7 @@
 
     &__btn {
         @include input;
-        width: 10rem;
+        width: 13rem;
         padding-bottom: 1rem;
         padding-left: 1rem;
         padding-right: 1rem;
