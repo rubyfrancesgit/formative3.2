@@ -6,17 +6,18 @@
     padding-bottom: 1rem;
 
     &__div {
-        width: 10rem;
+        min-width: 10rem;
         display: flex;
         align-items: center;
         cursor: pointer;
-        }
+    }
 
     &__p {
         @include text;
         margin-right: 1rem;
         margin-bottom: 0px;
         letter-spacing: 0.05em;
+
         &:hover{
             color: $purple;
         }
