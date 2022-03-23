@@ -550,7 +550,7 @@ body {
   padding-bottom: 1rem;
 }
 .add-project-select__div {
-  width: 10rem;
+  min-width: 10rem;
   display: flex;
   align-items: center;
   cursor: pointer;

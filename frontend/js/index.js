@@ -1,6 +1,4 @@
 $(document).ready(function() {
-    console.log('ready');
-
     const registerModal = document.getElementById('registerModal');
     const loginModal = document.getElementById('loginModal');
     const addProjectModal = document.getElementById('addProjectModal');
@@ -14,24 +12,22 @@ $(document).ready(function() {
 
     // displays registration modal
     $('#navRegisterBtn').click(function() {
-        console.log('clicked');
         registerModal.style.display = 'block';
         modalBackground.style.display = 'block';
     });
 
     // displays login modal
     $('#navLoginBtn').click(function() {
-        console.log('clicked');
-        loginModal.style.display = "block";
-        modalBackground.style.display = "block";
+        loginModal.style.display = 'block';
+        modalBackground.style.display = 'block';
     });
     
     // hides modals
     $('#modalBackground').click(function() {
-        registerModal.style.display = "none";
-        loginModal.style.display = "none";
+        registerModal.style.display = 'none';
+        loginModal.style.display = 'none';
         addProjectModal.style.display = 'none';
-        modalBackground.style.display = "none";
+        modalBackground.style.display = 'none';
         userModal.style.display = 'none';
         updateProjectModal.style.display = 'none';
     });
@@ -45,9 +41,7 @@ $(document).ready(function() {
         crossDomain: true,
         dataType: 'json',
         success: function(configData) {
-            console.log(configData.SERVER_URL, configData.SERVER_PORT);
             url = `${configData.SERVER_URL}:${configData.SERVER_PORT}`;
-            // console.log(url);
             viewProjects(); //called here to use url in allProjectsFromDB on page load
         },
         error: function(error) {
@@ -66,10 +60,8 @@ $(document).ready(function() {
         let username = sessionStorage.getItem('userName');
         let projectUrl = $('#addProjectProjectUrl').val();
 
-        console.log(name, imgUrl, description, projectUrl);
-
-        if(name == "" || imgUrl == "" || description == "" || projectUrl =="" || !userId) {
-            alert("Please login and enter all fields");
+        if(name == '' || imgUrl == '' || description == '' || projectUrl == '' || !userId) {
+            alert('Please login and enter all fields');
         } else {
             $.ajax({
                 url: `http://${url}/addProject`,
@@ -83,7 +75,6 @@ $(document).ready(function() {
                     user_id: userId
                 },
                 success: function(project) {
-                    console.log(project);
                     alert('Project added');
 
                     $('#addProjectName').val('');
@@ -108,10 +99,8 @@ $(document).ready(function() {
         let description = $('#updateProjectDescription').val();
         let projectUrl = $('#updateProjectProjectUrl').val();
 
-        console.log(id, name, imgUrl, description, projectUrl);
-
-        if(id == "") {
-            alert("please enter project ID");
+        if(id == '') {
+            alert('please enter project ID');
         } else {
             $.ajax({
                 url: `http://${url}/updateProject/${id}`,
@@ -123,7 +112,6 @@ $(document).ready(function() {
                     project_url: projectUrl
                 },
                 success: function(data) {
-                    console.log(data);
 
                     $('#updateProjectId').val('');
                     $('#updateProjectName').val('');
@@ -147,8 +135,6 @@ $(document).ready(function() {
         let email = $('#signUpEmail').val();
         let password = $('#signUpPassword').val();
 
-        console.log(username, email, password); //remove when development is finished
-
         if(username == '' || email == '' || password == '') {
             alert('please enter all details');
         } else {
@@ -161,7 +147,6 @@ $(document).ready(function() {
                     password: password
                 },
                 success: function (user) {
-                    console.log(user); //remove when development is finished
                     if(user !== 'Username already taken. Please use a different username') {
                         alert('Thank you for registering. Please login');
 
@@ -170,8 +155,8 @@ $(document).ready(function() {
                         $('#signUpEmail').val('');
                         $('#signUpPassword').val('');
 
-                        registerModal.style.display = "none";
-                        modalBackground.style.display = "none";
+                        registerModal.style.display = 'none';
+                        modalBackground.style.display = 'none';
                     } else {
                         alert('Username already taken. Please use a different username');
 
@@ -195,8 +180,6 @@ $(document).ready(function() {
         let username = $('#loginUsername').val();
         let password = $('#loginPassword').val();
 
-        console.log(username, password); //remove when development is finished
-
         if(username == ''  || password == '') {
             alert('Please enter all details');
         } else {
@@ -208,8 +191,6 @@ $(document).ready(function() {
                     password: password
                 },
                 success: function(user) {
-                    console.log(user);
-
                     if(user == 'User not found. Please register') {
                         alert('User not found. Please register');
                     } else if(user == 'not authorized') {
@@ -223,20 +204,18 @@ $(document).ready(function() {
                         sessionStorage.setItem('userID', user['_id']);
                         sessionStorage.setItem('userName', user['username']);
                         sessionStorage.setItem('userEmail', user['email']);
-                        console.log(sessionStorage);
                         
                         // clearing inputs
                         $('#loginUsername').val('');
                         $('#loginPassword').val('');
 
                         // hiding login modal
-                        loginModal.style.display = "none";
-                        modalBackground.style.display = "none";
-                        navRegisterBtn.style.display = "none";
-                        navLoginBtn.style.display = "none";
+                        loginModal.style.display = 'none';
+                        modalBackground.style.display = 'none';
+                        navRegisterBtn.style.display = 'none';
+                        navLoginBtn.style.display = 'none';
 
                         let displayName = sessionStorage.getItem('userName');
-                        console.log(displayName);
 
                         // displaying user's details when logged in
                         $('#navUl').append(
@@ -257,7 +236,6 @@ $(document).ready(function() {
 
                         // displays add project modal
                         $('#addProjectDiv').click(function() {
-                            console.log('clicked');
                             $('#modal').empty();
                             addProjectModal.style.display = 'block';
                             modalBackground.style.display = 'block';
@@ -265,7 +243,6 @@ $(document).ready(function() {
 
                         // displays user modal - logout section
                         $('#navName').click(function() {
-                            console.log('navName clicked');
                             userModal.style.display = 'block';
                             modalBackground.style.display = 'block';
                         });
@@ -283,12 +260,11 @@ $(document).ready(function() {
     $('#logoutBtn').click(function() {
         sessionStorage.clear();
         alert('You are now logged out');
-        console.log(sessionStorage);
         const navName = document.getElementById('navName');
 
         // changes nav setup to what a logged out user would see
-        navRegisterBtn.style.display = "block";
-        navLoginBtn.style.display = "block";
+        navRegisterBtn.style.display = 'block';
+        navLoginBtn.style.display = 'block';
         userModal.style.display = 'none';
         modalBackground.style.display = 'none';
         navName.style.display = 'none';
@@ -305,7 +281,6 @@ $(document).ready(function() {
             type: 'GET',
             datatype: 'json',
             success: function(projectsFromMongo){
-                // console.log(projectsFromMongo);
                 let i;
                 document.getElementById('result').innerHTML = '';
                 for(i=0; i<projectsFromMongo.length; i++){
@@ -333,8 +308,6 @@ $(document).ready(function() {
 
                 // displays update project modal
                 $('.updateBtn').click(function() {
-                    console.log('update clicked');
-
                     updateProjectModal.style.display = 'block';
                     modalBackground.style.display = 'block';
                 });
@@ -381,7 +354,6 @@ $(document).ready(function() {
                 else {
                     // adding active and displaying card content on hover
                     $('.projects__card').hover(function(){
-                        // console.log(url);
                         $(this).addClass('active');
                         // then when card is hovered over hide class is removed
                         $('#'+this.id+' .projects__heading').removeClass('hide');
@@ -419,7 +391,6 @@ $(document).ready(function() {
 
                 $('.projects__project-options').click(function(){
                     let cardId = $(this).parent().attr('id');
-                    console.log(cardId);
                     $('#'+cardId+' .projects__dropdown-content').toggle('show');
                 });
 
@@ -432,19 +403,15 @@ $(document).ready(function() {
 
                 // delete project
                 $('.deleteBtn').click(function() {
-                    // console.log("delete clicked");
                     let id = $(this).parent().parent().attr('id');
 
-                    // console.log(id);
-
-                    if(id == "") {
-                        alert("please enter project id");
+                    if(id == '') {
+                        alert('please enter project id');
                     } else {
                         $.ajax({
                             url: `http://${url}/deleteProject/${id}`,
                             type: 'DELETE',
                             success: function(data) {
-                                console.log('deleted');
                                 alert('deleted');
 
                             },
