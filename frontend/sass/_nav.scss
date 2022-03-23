@@ -13,6 +13,7 @@
         width: 172px;
         padding-top:20px;
         filter: invert(99%) sepia(2%) saturate(528%) hue-rotate(199deg) brightness(117%) contrast(91%);
+
         &:hover{
             cursor: pointer;
             filter: invert(75%) sepia(29%) saturate(3587%) hue-rotate(211deg) brightness(87%) contrast(94%);
@@ -32,6 +33,7 @@
         font-size: 1.4rem;
         padding: 1rem;
         letter-spacing: 0.05em;
+
         &:hover{
             color: $purple;
             border-bottom: 1px solid $purple;
@@ -47,6 +49,7 @@
         padding: 1rem;
         letter-spacing: 0.05em;
         text-align: right;
+
         &:hover{
             color: $purple;
             border-bottom: 1px solid $purple;
@@ -65,6 +68,7 @@
         border: none;
         padding: 1rem;
         letter-spacing: 0.05em;
+
         &:hover{
             color: $purple;
             border-bottom: 1px solid $purple;
@@ -81,6 +85,7 @@
 #navLoginBtn{
     border: 1px solid $med-grey;
     padding: 1rem;
+
     &:hover{
         color: $white;
         background: $purple;
@@ -96,22 +101,27 @@
             width: 110px;
             padding-top:20px;
         }
+
         &__ul {
             flex-flow: column-reverse wrap;
             align-items: flex-end;
             width: 36%;
             padding-top: 2rem;
         }
+
         &__li {
             font-size: 1.2rem;
             margin-bottom: 0.5rem;
         }
+
         &__search {
             width: 100%;
         }
+
         &__search::placeholder {
             font-size: 1.2rem;
         }
+
         &__select {
             font-size: 1.2rem;
         }
@@ -123,24 +133,30 @@
     .nav {
         height: 22vh;
         padding: 0 2rem 0 3rem;
+
         &__heading {
             width: 100px;
             padding-top:20px;
         }
+
         &__ul {
             flex-flow: column-reverse wrap;
             align-items: flex-end;
             width: 45%;
         }
+
         &__li {
             font-size: 1.2rem;
         }
+
         &__search {
             width: 100%;
         }
+
         &__search::placeholder {
             font-size: 1.2rem;
         }
+        
         &__select {
             font-size: 1.2rem;
         }
