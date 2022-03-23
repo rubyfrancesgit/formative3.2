@@ -7,3 +7,27 @@
 @import 'add-project';
 @import 'update-project';
 @import 'delete-project';
+
+.tagline{
+    font-family: $heading-font;
+    text-transform: uppercase;
+    font-size: 2.5rem;
+    padding: 10rem 0 8rem 5rem ;
+    color: $med-grey;
+    &:hover{
+        color: $purple;
+    }
+}
+
+/* Medium Devices (Tablets) */
+@media #{$tablet} {
+    .tagline{
+        font-size: 1.8rem;
+        padding: 10rem 0 6rem 4rem ;
+    }
+}
+
+/* Small Devices (Mobile) */
+@media #{$mobile}{
+
+}
