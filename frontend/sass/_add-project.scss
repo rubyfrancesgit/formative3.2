@@ -1,14 +1,15 @@
 .add-project-select {
+    width: 100vw;
+    padding: 0% 0% 0% 26%;
     width: 100%;
-    padding: 0% 0% 0% 18%;
     padding-top: 1rem;
     padding-bottom: 1rem;
 
     &__div {
+        width: 10rem;
         display: flex;
         align-items: center;
-        &:hover{
-            cursor: pointer;
+        cursor: pointer;
         }
     }
 

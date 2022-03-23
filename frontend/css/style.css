@@ -34,7 +34,7 @@ body {
   width: 100%;
   min-height: 50px;
   display: grid;
-  padding: 5% 4% 5% 19%;
+  padding: 1% 4% 5% 19%;
   grid-template-columns: repeat(auto-fit, 150px);
   gap: 17rem 1.5rem;
   direction: rtl;
@@ -58,6 +58,7 @@ body {
   font-size: 2rem;
   display: inline-block;
   border: none;
+  z-index: 3000;
   background-image: url(../assets/options-dropdown-icon.svg);
   background-repeat: no-repeat;
   background-size: contain;
@@ -541,14 +542,18 @@ body {
 }
 
 .add-project-select {
+  width: 100vw;
+  padding: 0% 0% 0% 26%;
   width: 100%;
   padding: 0% 0% 0% 18%;
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
 .add-project-select__div {
+  width: 10rem;
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 .add-project-select__div:hover {
   cursor: pointer;
@@ -637,6 +642,128 @@ body {
   bottom: 0;
 }
 
+.update-project {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-direction: column;
+  padding-right: 5rem;
+}
+.update-project__heading {
+  padding-right: 30%;
+  margin-bottom: 3rem;
+}
+.update-project__input {
+  border: none;
+  color: #B6B6B6;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background: transparent;
+  border-bottom: 1px solid #B6B6B6;
+  margin-bottom: 2rem;
+}
+.update-project__input::placeholder {
+  color: #B6B6B6;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.3rem;
+}
+.update-project__btn {
+  border: none;
+  color: #B6B6B6;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background: transparent;
+  width: 13rem;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-top: 1rem;
+}
+.update-project__box {
+  height: 40px;
+  width: 20px;
+  position: relative;
+  border-bottom: 1px solid #B6B6B6;
+  margin-right: 4rem;
+}
+.update-project__border-left {
+  border-left: 1px solid #B6B6B6;
+  position: absolute;
+  top: 50%;
+  bottom: 0;
+}
+
+.delete-project {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-direction: column;
+  padding-right: 5rem;
+}
+.delete-project__heading {
+  padding-right: 30%;
+  margin-bottom: 3rem;
+}
+.delete-project__input {
+  border: none;
+  color: #B6B6B6;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background: transparent;
+  border-bottom: 1px solid #B6B6B6;
+  margin-bottom: 2rem;
+}
+.delete-project__input::placeholder {
+  color: #B6B6B6;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.3rem;
+}
+.delete-project__btn {
+  border: none;
+  color: #B6B6B6;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background: transparent;
+  width: 13rem;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-top: 1rem;
+}
+.delete-project__box {
+  height: 40px;
+  width: 20px;
+  position: relative;
+  border-bottom: 1px solid #B6B6B6;
+  margin-right: 4rem;
+}
+.delete-project__border-left {
+  border-left: 1px solid #B6B6B6;
+  position: absolute;
+  top: 50%;
+  bottom: 0;
+}
+
 /* Medium Devices (Tablets) */
 @media (min-width:601px) and (max-width:1023px) {
   .add-project-select__p {
@@ -673,4 +800,3 @@ body {
     padding: 10rem 0 6rem 4rem;
   }
 }
-/* Small Devices (Mobile) */
