@@ -148,5 +148,27 @@
 
 /* Small Devices (Mobile) */
 @media #{$mobile}{
+    .projects{
+        padding: 5% 7% 5% 40%;
+        gap: 28rem 1.5rem;
+        cursor: pointer;
+        &__heading{
+            width: 11ch;
+            font-size: 5rem;
+        }
+        &__portfolio-link{
+            pointer-events:none;
+        }
+        &__description-wrap{
+            width: 95%;
+            bottom: -15rem;
+        }
+        &__description{
+            text-align: left;
+        }
+    }
 
+    .active{
+        width: 276px;
+    }
 }

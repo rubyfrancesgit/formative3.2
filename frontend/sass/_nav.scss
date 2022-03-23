@@ -111,5 +111,29 @@
 
 /* Small Devices (Mobile) */
 @media #{$mobile}{
-
+    .nav {
+        padding: 0 2rem 0 3rem;
+        &__heading {
+            width: 100px;
+            padding-top:20px;
+        }
+        &__ul {
+            flex-flow: column-reverse wrap;
+            align-items: flex-end;
+            width: 45%;
+            padding-top: 1.5rem;
+        }
+        &__li {
+            font-size: 1.2rem;
+        }
+        &__search {
+            width: 100%;
+        }
+        &__search::placeholder {
+            font-size: 1.2rem;
+        }
+        &__select {
+            font-size: 1.2rem;
+        }
+    }
 }

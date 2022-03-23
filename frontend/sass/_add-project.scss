@@ -99,5 +99,12 @@
 
 /* Small Devices (Mobile) */
 @media #{$mobile}{
-
+    .add-project-select{
+        &__p {
+            font-size: 1.2rem;
+        }
+        &__icon {
+            width: 0.8rem;
+        }
+    }
 }

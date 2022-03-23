@@ -177,6 +177,31 @@ body {
   }
 }
 /* Small Devices (Mobile) */
+@media (max-width: 600px) {
+  .projects {
+    padding: 5% 7% 5% 40%;
+    gap: 28rem 1.5rem;
+    cursor: pointer;
+  }
+  .projects__heading {
+    width: 11ch;
+    font-size: 5rem;
+  }
+  .projects__portfolio-link {
+    pointer-events: none;
+  }
+  .projects__description-wrap {
+    width: 95%;
+    bottom: -15rem;
+  }
+  .projects__description {
+    text-align: left;
+  }
+
+  .active {
+    width: 276px;
+  }
+}
 .nav {
   width: 100%;
   height: 15vh;
@@ -298,6 +323,33 @@ body {
   }
 }
 /* Small Devices (Mobile) */
+@media (max-width: 600px) {
+  .nav {
+    padding: 0 2rem 0 3rem;
+  }
+  .nav__heading {
+    width: 100px;
+    padding-top: 20px;
+  }
+  .nav__ul {
+    flex-flow: column-reverse wrap;
+    align-items: flex-end;
+    width: 45%;
+    padding-top: 1.5rem;
+  }
+  .nav__li {
+    font-size: 1.2rem;
+  }
+  .nav__search {
+    width: 100%;
+  }
+  .nav__search::placeholder {
+    font-size: 1.2rem;
+  }
+  .nav__select {
+    font-size: 1.2rem;
+  }
+}
 .small-modal-container {
   display: none;
   background: #0D0D0D;
@@ -595,6 +647,14 @@ body {
   }
 }
 /* Small Devices (Mobile) */
+@media (max-width: 600px) {
+  .add-project-select__p {
+    font-size: 1.2rem;
+  }
+  .add-project-select__icon {
+    width: 0.8rem;
+  }
+}
 .tagline {
   font-family: "Oswald", sans-serif;
   text-transform: uppercase;
