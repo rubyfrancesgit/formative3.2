@@ -68,6 +68,13 @@
         }
     }
 
+    &__portfolio-link{
+        height: 100%;
+        width: 100%;
+        background: yellow;
+        z-index: 110;
+    }
+
     &__image-wrap{
         height: 100%;
         width: 100%;
@@ -124,6 +131,26 @@
         text-align: center;
         color: $light-purple;
     }
+    &__small-screen-link{
+        color: $white;
+        font-family: $condensed-font;
+        font-size: 2rem;
+        letter-spacing: 0.05em;
+        position: absolute;
+        top: 5%;
+        left: 6%;
+        &:hover{
+            color: $purple;
+        }
+    }
+    &__link-icon{
+        height: 15px;
+        padding: 0 8px;
+        filter: invert(99%) sepia(2%) saturate(528%) hue-rotate(199deg) brightness(117%) contrast(91%);
+        &:hover{
+            filter: invert(75%) sepia(29%) saturate(3587%) hue-rotate(211deg) brightness(87%) contrast(94%);
+        }
+    }
 }
 
 .active{
@@ -166,13 +193,22 @@
 /* Small Devices (Mobile) */
 @media #{$mobile}{
     .projects{
+        grid-template-columns: repeat(auto-fit, 60px);
         padding: 5% 7% 5% 40%;
-        gap: 28rem 1.5rem;
+        gap: 36rem 1rem;
         cursor: pointer;
+
+        &__card{
+            height: 400px;
+            width: 60px;
+        }
 
         &__heading{
             width: 11ch;
-            font-size: 5rem;
+            font-size: 3.8rem;
+        }
+        &__author{
+            font-size: 2rem;
         }
 
         &__portfolio-link{
@@ -180,16 +216,23 @@
         }
 
         &__description-wrap{
-            width: 95%;
+            width: 105%;
             bottom: -15rem;
+            left: 50%
         }
         
         &__description{
             text-align: left;
         }
+        &__small-screen-link{
+            font-size: 1.5rem;
+        }
+        &__link-icon{
+            height: 10px;
+        }
     }
 
     .active{
-        width: 276px;
+        width: 205px;
     }
 }

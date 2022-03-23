@@ -7,6 +7,7 @@
     align-items: center;
     padding-left: 5rem;
     padding-right: 3rem;
+    margin-bottom: 8rem;
 
     &__heading {
         width: 172px;
@@ -73,6 +74,12 @@
             border-bottom: 1px solid $purple;
         }
     }
+    &__name{
+        padding: 1rem;
+        &:hover{
+            color: $purple;
+        }
+    }
 }
 
 #navLoginBtn{
@@ -89,6 +96,7 @@
 /* Medium Devices (Tablets) */
 @media #{$tablet} {
     .nav {
+        height: 20vh;
         &__heading {
             width: 110px;
             padding-top:20px;
@@ -98,11 +106,12 @@
             flex-flow: column-reverse wrap;
             align-items: flex-end;
             width: 36%;
-            padding-top: 3rem;
+            padding-top: 2rem;
         }
 
         &__li {
             font-size: 1.2rem;
+            margin-bottom: 0.5rem;
         }
 
         &__search {
@@ -122,6 +131,7 @@
 /* Small Devices (Mobile) */
 @media #{$mobile}{
     .nav {
+        height: 22vh;
         padding: 0 2rem 0 3rem;
 
         &__heading {
@@ -133,7 +143,6 @@
             flex-flow: column-reverse wrap;
             align-items: flex-end;
             width: 45%;
-            padding-top: 1.5rem;
         }
 
         &__li {

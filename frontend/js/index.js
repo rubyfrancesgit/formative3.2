@@ -284,37 +284,38 @@ $(document).ready(function() {
                 let i;
                 document.getElementById('result').innerHTML = '';
                 for(i=0; i<projectsFromMongo.length; i++){
-                document.getElementById('result').innerHTML +=
-                // Adding project-card elements here
-                `
-                <div id="${projectsFromMongo[i]._id}" class="projects__card">
-                    <button class="projects__project-options"></button>
-                    <div class="projects__dropdown-content">
-                        <a class="updateBtn">Update</a>
-                        <a class="deleteBtn">Delete</a>
-                    </div>
-                    <a class="projects__portfolio-link" href="${projectsFromMongo[i].project_url}" target="blank">
-                        <div class="projects__image-wrap">
-                            <img class="projects__img" src="${projectsFromMongo[i].image_url}" alt="project image">
+                    document.getElementById('result').innerHTML +=
+                    // Adding project-card elements here
+                    `
+                    <div id="${projectsFromMongo[i]._id}" class="projects__card">
+                        <button class="projects__project-options"></button>
+                        <div class="projects__dropdown-content">
+                            <a class="updateBtn">Update</a>
+                            <a class="deleteBtn">Delete</a>
                         </div>
-                    </a>
-                    <h1 class="projects__heading hide">${projectsFromMongo[i].name}</h1>
-                    <h3 class="projects__author hide">${projectsFromMongo[i].username}</h3>
-                    <div class="projects__description-wrap hide">
-                        <p class="projects__description" id="123${projectsFromMongo[i]._id}">${projectsFromMongo[i].description}</p>
+                        <a class="projects__portfolio-link" href="${projectsFromMongo[i].project_url}"  target="blank">
+                            <div class="projects__image-wrap">
+                                <img class="projects__img" src="${projectsFromMongo[i].image_url}" alt="project image">
+                            </div>
+                        </a>
+                        <h1 class="projects__heading hide">${projectsFromMongo[i].name}</h1>
+                        <a class="projects__small-screen-link hide" href="${projectsFromMongo[i].project_url}"  target="blank">Go to project<img class="projects__link-icon" src="../frontend/assets/click-screen-link-icon.svg" alt="project link icon"></a>
+                        <h3 class="projects__author hide">${projectsFromMongo[i].username}</h3>
+                        <div class="projects__description-wrap hide">
+                            <p class="projects__description" id="123${projectsFromMongo[i]._id}">${projectsFromMongo[i].description}</p>
+                        </div>
                     </div>
-                </div>
-                `;
+                    `;
+                } //end of for loop
+
+                // following runs in success function so elements can be selected afterwards
+
 
                 // displays update project modal
                 $('.updateBtn').click(function() {
                     updateProjectModal.style.display = 'block';
                     modalBackground.style.display = 'block';
                 });
-
-                
-              }
-                // following runs in success function so elements can be selected afterwards
 
                 // hiding button by default
                 $('.projects__project-options').hide();
@@ -323,17 +324,25 @@ $(document).ready(function() {
                 // when at tablet size or less add active on click,
                 // else add active on hover
                 if ($(window).width() < 1023) {
+                    // disabling link
+                    $('.projects__portfolio-link').attr('onclick', 'return false;');
+
                     // adding active and displaying card content on click
                     $('.projects__card').click(function(){
                         $(this).addClass('active');
 
-                        
                         // then when card is hovered over hide class is removed
                         $('#'+this.id+' .projects__heading').removeClass('hide');
+                        $('#'+this.id+' .projects__small-screen-link').removeClass('hide');
                         $('#'+this.id+' .projects__author').removeClass('hide');
                         $('#'+this.id+' .projects__description-wrap').removeClass('hide');
-                        // show card options button
-                        $('#'+this.id+' .projects__project-options').show();
+
+                        // if user is logged in
+                        let displayName = sessionStorage.getItem('userName');
+                        if (displayName !== null){
+                            // show card options button
+                            $('#'+this.id+' .projects__project-options').show();
+                        }
                     });
 
                     // Close the active card if the user clicks outside of it
@@ -341,10 +350,17 @@ $(document).ready(function() {
                         $('.projects__card').removeClass('active');
                         // then when user leaves card hide class is added
                         $('.projects__heading').addClass('hide');
+                        $('.projects__small-screen-link').addClass('hide');
                         $('.projects__author').addClass('hide');
                         $('.projects__description-wrap').addClass('hide');
-                        // hide card options button
-                        $('.projects__project-options').hide();
+                        
+
+                        // if user is logged in
+                        let displayName = sessionStorage.getItem('userName');
+                        if (displayName !== null){
+                            // hide card options button
+                            $('.projects__project-options').hide();
+                        }
                     });
 
                     $('.projects__card').click(function(event){
@@ -372,7 +388,7 @@ $(document).ready(function() {
                         $('#'+this.id+' .projects__heading').addClass('hide');
                         $('#'+this.id+' .projects__author').addClass('hide');
                         $('#'+this.id+' .projects__description-wrap').addClass('hide');
-
+                        
                         // if user is logged in
                         let displayName = sessionStorage.getItem('userName');
                         if (displayName !== null){
@@ -421,6 +437,7 @@ $(document).ready(function() {
                         }); // end of ajax
                     } // end of if statement
                 }); // end of delete project
+
 
             },
             error:function(){
