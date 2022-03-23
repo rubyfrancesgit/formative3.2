@@ -1,5 +1,4 @@
 .projects{
-    // background: coral;
     width: 100%;
     min-height: 50px;
     display: grid;
@@ -17,6 +16,7 @@
         transition: width 1s ease, z-index 0.5s, filter 1s ease;
     }
     &__project-options{
+        display: none;
         padding: 1rem;
         position: absolute;
         top: 15px;
@@ -26,15 +26,19 @@
         font-size: 2rem;
         display: inline-block;
         border: none;
+        background-image: url(../assets/options-dropdown-icon.svg);
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        z-index: 101;
+        filter: invert(99%) sepia(2%) saturate(528%) hue-rotate(199deg) brightness(117%) contrast(91%);
         &:hover{
-            color: $purple;
+            cursor: pointer;
+            filter: invert(75%) sepia(29%) saturate(3587%) hue-rotate(211deg) brightness(87%) contrast(94%);
         }
         &:focus{
-            color: $purple;
+            filter: invert(75%) sepia(29%) saturate(3587%) hue-rotate(211deg) brightness(87%) contrast(94%);
         }
-    }
-    &__options-icon{
-        z-index: -1;
     }
     &__dropdown-content {
         position: absolute;
@@ -43,7 +47,7 @@
         overflow: auto;
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
         right: 0;
-        top: 60px;
+        top: 50px;
         z-index: 200;
         & a{
             color: $white;
@@ -70,8 +74,8 @@
         z-index: -1;
         }
     &__heading{
-        width: 15ch;
-        font-size: 10rem;
+        width: 11ch;
+        font-size: 9rem;
         position: absolute;
         top: 50%;
         left: 50%;
@@ -79,8 +83,8 @@
         text-align: center;
         font-family: $heading-font;
         z-index: 101;
-        line-height: 0.8;
-        letter-spacing: 0.12em;
+        line-height: 1;
+        letter-spacing: -0.02em;
         text-transform: uppercase;
         color: $white;
     }
@@ -92,6 +96,7 @@
         z-index: 101;
         font-family: $condensed-font;
         color: $white;
+        letter-spacing: 0.1em;
     }
     &__description-wrap{
         width: 114%;
@@ -114,3 +119,56 @@
     filter: grayscale(0%);
 }
 
+/* Medium Devices (Tablets) */
+@media #{$tablet} {
+    .projects{
+        padding: 5% 4% 5% 40%;
+        gap: 21rem 1.5rem;
+        cursor: pointer;
+        &__heading{
+            width: 11ch;
+            font-size: 6.2rem;
+        }
+        &__portfolio-link{
+            pointer-events:none;
+        }
+        &__description-wrap{
+            width: 100%;
+            bottom: -15rem;
+        }
+        &__description{
+            text-align: left;
+        }
+    }
+
+    .active{
+        width: 375px;
+    }
+}
+
+/* Small Devices (Mobile) */
+@media #{$mobile}{
+    .projects{
+        padding: 5% 7% 5% 40%;
+        gap: 28rem 1.5rem;
+        cursor: pointer;
+        &__heading{
+            width: 11ch;
+            font-size: 5rem;
+        }
+        &__portfolio-link{
+            pointer-events:none;
+        }
+        &__description-wrap{
+            width: 95%;
+            bottom: -15rem;
+        }
+        &__description{
+            text-align: left;
+        }
+    }
+
+    .active{
+        width: 276px;
+    }
+}
