@@ -19,6 +19,7 @@ li {
 }
 
 body {
+  background: red;
   width: 100%;
   background: #0D0D0D;
   color: #B6B6B6;
@@ -228,7 +229,7 @@ body {
   text-align: center;
 }
 .nav__li {
-  width: 8rem;
+  min-width: 8rem;
   margin-left: 1rem;
   margin-right: 1rem;
   font-size: 1.4rem;
@@ -545,7 +546,6 @@ body {
   width: 100vw;
   padding: 0% 0% 0% 26%;
   width: 100%;
-  padding: 0% 0% 0% 18%;
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
@@ -553,9 +553,6 @@ body {
   width: 10rem;
   display: flex;
   align-items: center;
-  cursor: pointer;
-}
-.add-project-select__div:hover {
   cursor: pointer;
 }
 .add-project-select__p {
@@ -642,6 +639,24 @@ body {
   bottom: 0;
 }
 
+/* Medium Devices (Tablets) */
+@media (min-width:601px) and (max-width:1023px) {
+  .add-project-select__p {
+    font-size: 1.2rem;
+  }
+  .add-project-select__icon {
+    width: 0.8rem;
+  }
+}
+/* Small Devices (Mobile) */
+@media (max-width: 600px) {
+  .add-project-select__p {
+    font-size: 1.2rem;
+  }
+  .add-project-select__icon {
+    width: 0.8rem;
+  }
+}
 .update-project {
   width: 100%;
   height: 100%;
@@ -659,7 +674,7 @@ body {
   border: none;
   color: #B6B6B6;
   font-family: "Open Sans", sans-serif;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -671,13 +686,13 @@ body {
 .update-project__input::placeholder {
   color: #B6B6B6;
   font-family: "Open Sans", sans-serif;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
 }
 .update-project__btn {
   border: none;
   color: #B6B6B6;
   font-family: "Open Sans", sans-serif;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -720,7 +735,7 @@ body {
   border: none;
   color: #B6B6B6;
   font-family: "Open Sans", sans-serif;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -732,13 +747,13 @@ body {
 .delete-project__input::placeholder {
   color: #B6B6B6;
   font-family: "Open Sans", sans-serif;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
 }
 .delete-project__btn {
   border: none;
   color: #B6B6B6;
   font-family: "Open Sans", sans-serif;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -764,24 +779,6 @@ body {
   bottom: 0;
 }
 
-/* Medium Devices (Tablets) */
-@media (min-width:601px) and (max-width:1023px) {
-  .add-project-select__p {
-    font-size: 1.2rem;
-  }
-  .add-project-select__icon {
-    width: 0.8rem;
-  }
-}
-/* Small Devices (Mobile) */
-@media (max-width: 600px) {
-  .add-project-select__p {
-    font-size: 1.2rem;
-  }
-  .add-project-select__icon {
-    width: 0.8rem;
-  }
-}
 .tagline {
   font-family: "Oswald", sans-serif;
   text-transform: uppercase;
@@ -800,3 +797,4 @@ body {
     padding: 10rem 0 6rem 4rem;
   }
 }
+/* Small Devices (Mobile) */
