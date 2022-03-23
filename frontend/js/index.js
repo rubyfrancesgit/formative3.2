@@ -5,7 +5,6 @@ $(document).ready(function() {
     const loginModal = document.getElementById('loginModal');
     const addProjectModal = document.getElementById('addProjectModal');
     const updateProjectModal = document.getElementById('updateProjectModal');
-    const deleteProjectModal = document.getElementById('deleteProjectModal');
     const modalBackground = document.getElementById('modalBackground');
     const navRegisterBtn = document.getElementById('navRegisterBtn');
     const navLoginBtn = document.getElementById('navLoginBtn');
@@ -35,7 +34,6 @@ $(document).ready(function() {
         modalBackground.style.display = "none";
         userModal.style.display = 'none';
         updateProjectModal.style.display = 'none';
-        deleteProjectModal.style.display = 'none';
     });
 
     let url;
@@ -140,31 +138,6 @@ $(document).ready(function() {
         } // end of if statement
     }); // end of update project
 
-    // delete project
-    $('#deleteProjectSubmitBtn').click(function() {
-        event.preventDefault();
-         
-        let id = $('#deleteProjectId').val();
-        console.log(id);
-
-        if(id == "") {
-            alert("please enter project id");
-        } else {
-            $.ajax({
-                url: `http://${url}/deleteProject/${id}`,
-                type: 'DELETE',
-                success: function(data) {
-                    console.log('deleted');
-                    alert('deleted');
-
-                    $('#deleteProjectId').val('');
-                },
-                error: function() {
-                    console.log('error: cannot delete');
-                }
-            }); // end of ajax
-        } // end of if statement
-    }); // end of delete project
 
     // register user
     $('#signUpBtn').click(function () {
@@ -344,7 +317,7 @@ $(document).ready(function() {
                     <div class="projects__dropdown-content">
                         <a class="updateBtn">Update</a>
                         <a class="deleteBtn">Delete</a>
-                      </div>
+                    </div>
                     <a class="projects__portfolio-link" href="${projectsFromMongo[i].project_url}" target="blank">
                         <div class="projects__image-wrap">
                             <img class="projects__img" src="${projectsFromMongo[i].image_url}" alt="project image">
@@ -366,22 +339,12 @@ $(document).ready(function() {
                     modalBackground.style.display = 'block';
                 });
 
-                // displays delete project modal
-                $('.deleteBtn').click(function() {
-                    console.log('delete clicked');
-
-                    deleteProjectModal.style.display = 'block';
-                    modalBackground.style.display = 'block';
-                });
-
                 
               }
                 // following runs in success function so elements can be selected afterwards
 
                 // hiding button by default
                 $('.projects__project-options').hide();
-
-                
                 
 
                 // when at tablet size or less add active on click,
@@ -390,6 +353,8 @@ $(document).ready(function() {
                     // adding active and displaying card content on click
                     $('.projects__card').click(function(){
                         $(this).addClass('active');
+
+                        
                         // then when card is hovered over hide class is removed
                         $('#'+this.id+' .projects__heading').removeClass('hide');
                         $('#'+this.id+' .projects__author').removeClass('hide');
@@ -422,16 +387,26 @@ $(document).ready(function() {
                         $('#'+this.id+' .projects__heading').removeClass('hide');
                         $('#'+this.id+' .projects__author').removeClass('hide');
                         $('#'+this.id+' .projects__description-wrap').removeClass('hide');
-                        // show card options button
-                        $('#'+this.id+' .projects__project-options').show();
+
+                        // if user is logged in
+                        let displayName = sessionStorage.getItem('userName');
+                        if (displayName !== null){
+                            // show card options button
+                            $('#'+this.id+' .projects__project-options').show();
+                        }
                         }, function(){
                         $(this).removeClass('active');
                         // then when user leaves card hide class is added
                         $('#'+this.id+' .projects__heading').addClass('hide');
                         $('#'+this.id+' .projects__author').addClass('hide');
                         $('#'+this.id+' .projects__description-wrap').addClass('hide');
-                        // hide card options button
-                        $('#'+this.id+' .projects__project-options').hide();
+
+                        // if user is logged in
+                        let displayName = sessionStorage.getItem('userName');
+                        if (displayName !== null){
+                            // hide card options button
+                            $('#'+this.id+' .projects__project-options').hide();
+                        }
                     });
                 }
 
@@ -449,11 +424,36 @@ $(document).ready(function() {
                 });
 
                 // Close the dropdown if the user clicks outside of it
-                // window.onclick = function(event) {
-                //   if (!event.target.matches('.projects__project-options')) {
-                //     $('.projects__dropdown-content').hide();
-                //   }
-                // }
+                window.onclick = function(event) {
+                  if (!event.target.matches('.projects__project-options')) {
+                    $('.projects__dropdown-content').hide();
+                  }
+                }
+
+                // delete project
+                $('.deleteBtn').click(function() {
+                    // console.log("delete clicked");
+                    let id = $(this).parent().parent().attr('id');
+
+                    // console.log(id);
+
+                    if(id == "") {
+                        alert("please enter project id");
+                    } else {
+                        $.ajax({
+                            url: `http://${url}/deleteProject/${id}`,
+                            type: 'DELETE',
+                            success: function(data) {
+                                console.log('deleted');
+                                alert('deleted');
+
+                            },
+                            error: function() {
+                                console.log('error: cannot delete');
+                            }
+                        }); // end of ajax
+                    } // end of if statement
+                }); // end of delete project
 
             },
             error:function(){
