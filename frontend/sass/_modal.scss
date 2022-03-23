@@ -8,7 +8,6 @@
     left: 50%;
     transform: translate(-50%,-50%);
     border: 2px solid black;
-    overflow-y: scroll;
     padding: 2rem;
     border-radius: 5px;
     z-index: 2001;
@@ -24,7 +23,6 @@
     left: 50%;
     transform: translate(-50%,-50%);
     border: 2px solid black;
-    overflow-y: scroll;
     padding: 2rem;
     border-radius: 5px;
     z-index: 2001;
@@ -43,6 +41,10 @@
     &__btn {
         @include input;
         width: 10rem;
+        color: $white;
+    }
+    &:hover{
+        background: $dark-med-grey;
     }
 }
 
@@ -77,6 +79,7 @@
         @include input;
         border-bottom: 1px solid #B6B6B6;
         margin-bottom: 2rem;
+        padding: 1rem;
     }
 
     &__input::placeholder {
@@ -121,13 +124,16 @@
 
     &__heading {
         padding-right: 50%;
-        margin-bottom: 3rem
+        margin-bottom: 3rem;
+        font-family: $heading-font
+        
     }
 
     &__input {
         @include input;
         border-bottom: 1px solid #B6B6B6;
         margin-bottom: 2rem;
+        padding: 1rem;
     }
 
     &__input::placeholder {
@@ -140,6 +146,9 @@
         padding-left: 1rem;
         padding-right: 1rem;
         margin-top: 1rem;
+        &:hover{
+            color: $purple;
+        }
     }
 
     &__box {
@@ -154,5 +163,20 @@
         position: absolute;
         top: 50%;
         bottom: 0;
+    }
+}
+
+/* Small Devices (Mobile) */
+@media #{$mobile}{
+    .small-modal-container {
+        width: 90vw;
+    }
+    .big-modal-container {
+        width: 90vw;
+    }
+    .user-modal {
+        top: 13%;
+        left: 74%;
+        transform: translate(-50%,-50%);
     }
 }

@@ -1,12 +1,9 @@
 .add-project-select {
-    width: 100vw;
-    padding: 0% 0% 0% 26%;
     width: 100%;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding-left: 5rem;
 
     &__div {
-        width: 10rem;
+        min-width: 10rem;
         display: flex;
         align-items: center;
         cursor: pointer;
