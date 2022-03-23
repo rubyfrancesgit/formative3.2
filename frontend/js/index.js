@@ -344,7 +344,8 @@ $(document).ready(function() {
                     <div class="projects__dropdown-content">
                         <a class="updateBtn">Update</a>
                         <a class="deleteBtn">Delete</a>
-                      </div>
+                    </div>
+                    
                     <a class="projects__portfolio-link" href="${projectsFromMongo[i].project_url}" target="blank">
                         <div class="projects__image-wrap">
                             <img class="projects__img" src="${projectsFromMongo[i].image_url}" alt="project image">
@@ -449,11 +450,11 @@ $(document).ready(function() {
                 });
 
                 // Close the dropdown if the user clicks outside of it
-                // window.onclick = function(event) {
-                //   if (!event.target.matches('.projects__project-options')) {
-                //     $('.projects__dropdown-content').hide();
-                //   }
-                // }
+                window.onclick = function(event) {
+                  if (!event.target.matches('.projects__project-options')) {
+                    $('.projects__dropdown-content').hide();
+                  }
+                }
 
             },
             error:function(){
