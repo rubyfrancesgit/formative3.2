@@ -7,6 +7,7 @@
     align-items: center;
     padding-left: 5rem;
     padding-right: 3rem;
+    margin-bottom: 8rem;
 
     &__heading {
         width: 172px;
@@ -70,7 +71,6 @@
         }
     }
     &__name{
-        // border-right: 3px solid $purple;
         padding: 1rem;
         &:hover{
             color: $purple;
